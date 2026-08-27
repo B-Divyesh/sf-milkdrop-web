@@ -1,0 +1,242 @@
+{
+  "communities": {
+    "0": [
+      "src_legal",
+      "src_legal_renderlegal",
+      "src_main",
+      "src_main_escapehtml",
+      "src_main_readpreferences",
+      "src_main_remotecode",
+      "src_main_renderphoneremote",
+      "src_main_updatenetworkstate",
+      "src_presets",
+      "src_presets_palettes",
+      "src_presets_preset",
+      "src_presets_presets",
+      "src_remote",
+      "src_remote_createcode",
+      "src_remote_phoneremote",
+      "src_remote_phoneremote_connect",
+      "src_remote_phoneremote_send",
+      "src_remote_remotecommand",
+      "src_remote_screenremote",
+      "src_remote_screenremote_start",
+      "src_remote_screenremote_stop",
+      "src_visualizer"
+    ],
+    "1": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_es2022",
+      "ref_src",
+      "ref_vite_client",
+      "ref_vite_config_ts",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_types",
+      "tsconfig_compileroptions_usedefineforclassfields",
+      "tsconfig_include"
+    ],
+    "2": [
+      "package",
+      "package_dependencies",
+      "package_dependencies_peerjs",
+      "package_dependencies_qrcode",
+      "package_json_peerjs",
+      "package_json_qrcode",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_audit",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_scripts_test_watch",
+      "package_type",
+      "package_version"
+    ],
+    "3": [
+      "axe_core_playwright",
+      "package_devdependencies",
+      "package_devdependencies_axe_core_playwright",
+      "package_devdependencies_playwright",
+      "package_devdependencies_types_qrcode",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "package_devdependencies_vitest",
+      "playwright",
+      "types_qrcode",
+      "typescript",
+      "vite",
+      "vitest"
+    ],
+    "4": [
+      "src_audio",
+      "src_audio_analysis",
+      "src_audio_analysis_audioframe",
+      "src_audio_analysis_beattracker",
+      "src_audio_analysis_beattracker_reset",
+      "src_audio_analysis_beattracker_tempo",
+      "src_audio_analysis_beattracker_update",
+      "src_audio_analysis_test",
+      "src_audio_framelistener",
+      "src_audio_quiet_frame",
+      "src_visualizer_visualizer_setaudio"
+    ],
+    "5": [
+      "src_main_opendialog",
+      "src_main_setupvisualizer",
+      "src_main_setupvisualizer_applytuning",
+      "src_main_setupvisualizer_handleremote",
+      "src_main_setupvisualizer_nextavailable",
+      "src_main_setupvisualizer_onframe",
+      "src_main_setupvisualizer_renderpreset",
+      "src_main_setupvisualizer_selectpreset",
+      "src_main_setupvisualizer_showstatus",
+      "src_main_setupvisualizer_stop",
+      "src_main_setupvisualizer_updateoutputs"
+    ],
+    "6": [
+      "src_license",
+      "src_license_cachedverdict",
+      "src_license_licensemanager",
+      "src_license_licensemanager_constructor",
+      "src_license_licensemanager_initialize",
+      "src_license_licensemanager_readverdict",
+      "src_license_licensemanager_restore",
+      "src_license_licensemanager_setunlocked",
+      "src_license_licensemanager_verify",
+      "src_license_verifyresponse"
+    ],
+    "7": [
+      "src_visualizer_visualizer",
+      "src_visualizer_visualizer_constructor",
+      "src_visualizer_visualizer_createprogram",
+      "src_visualizer_visualizer_destroy",
+      "src_visualizer_visualizer_loop",
+      "src_visualizer_visualizer_resize",
+      "src_visualizer_visualizer_sethighresolution",
+      "src_visualizer_visualizer_setintensity",
+      "src_visualizer_visualizer_setpalette",
+      "src_visualizer_visualizer_setpreset"
+    ],
+    "8": [
+      "src_audio_roomaudio",
+      "src_audio_roomaudio_loop",
+      "src_audio_roomaudio_start",
+      "src_audio_roomaudio_startdemo",
+      "src_audio_roomaudio_stop"
+    ],
+    "9": [
+      "scripts_browser_audit",
+      "scripts_browser_audit_errors",
+      "scripts_browser_audit_serious"
+    ],
+    "10": [
+      "public_sw",
+      "public_sw_shell"
+    ],
+    "11": [
+      "peerjs_peerjs"
+    ],
+    "12": [
+      "qrcode_qrcode"
+    ],
+    "13": [
+      "vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1341991341991342,
+    "1": 0.1111111111111111,
+    "2": 0.11764705882352941,
+    "3": 0.15384615384615385,
+    "4": 0.2545454545454545,
+    "5": 0.36363636363636365,
+    "6": 0.3333333333333333,
+    "7": 0.28888888888888886,
+    "8": 0.7,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_main_setupvisualizer",
+      "label": "setupVisualizer()",
+      "degree": 16
+    },
+    {
+      "id": "src_visualizer_visualizer",
+      "label": "Visualizer",
+      "degree": 13
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 10
+    },
+    {
+      "id": "src_license_licensemanager",
+      "label": "LicenseManager",
+      "degree": 8
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "src_audio_analysis_audioframe",
+      "label": "AudioFrame",
+      "degree": 6
+    },
+    {
+      "id": "src_audio_analysis_beattracker",
+      "label": "BeatTracker",
+      "degree": 6
+    },
+    {
+      "id": "src_audio_roomaudio",
+      "label": "RoomAudio",
+      "degree": 6
+    },
+    {
+      "id": "src_main_setupvisualizer_selectpreset",
+      "label": "selectPreset()",
+      "degree": 6
+    },
+    {
+      "id": "src_main_setupvisualizer_handleremote",
+      "label": "handleRemote()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Visualizer",
+      "target": "AudioFrame",
+      "source_files": [
+        "src/visualizer.ts",
+        "src/audio-analysis.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
