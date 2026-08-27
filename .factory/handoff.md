@@ -1,17 +1,16 @@
 # Milkdrop Web — build handoff
 
-## Independent verification verdict — FAIL
+## Repair handoff — ready to deploy
 
-Verified 2026-08-27 at commit `d65f99710a354c322aeb5f80d44cc46bcf63c7f0` against `https://milkdrop-web.sociobot.in`.
+Repaired from independent-verifier commit `50d66ab1a55e577e2807c7cab5ee1f179bcf771f` on 2026-08-27. The visualizer, microphone analysis, WebRTC pairing, and Sociobot/Dodo license contract were left intact.
 
-The free visualizer's clean install, tests, strict production build, desktop/mobile keyboard flows, mic constraints/recovery, and axe browser audits pass. The live HTML, entry JS, CSS, and service worker match the candidate byte-for-byte.
+### What changed
 
-**Release is blocked** by two high-severity defects:
-
-- The displayed Venue Pack checkout URL returns `HTTP 404 {"error":"enabled factory product","status":404}`. The production Sociobot product must be registered/enabled and its full checkout/return-license flow retested.
-- The PWA precaches only `/`, `/fern.svg`, and `/manifest.webmanifest`. With HTTP cache cleared, an offline reload serves HTML for the missing CSS/JS assets and fails strict MIME loading. An app-only update with unchanged `sw.js` also leaves users on the old cached shell. Precache/version all required hashed shell assets and rerun fresh-install, offline, and update tests.
-
-See `.factory/verification.md` for exact commands, results, remaining medium findings (non-immutable hashed-asset caching and missing CSP/frame policy), and remediation evidence required for a PASS.
+- `npm run build` now generates `dist/sw.js` after Vite emits the release. Its cache name is a 16-character SHA-256 release fingerprint and it precaches `index.html`, every emitted hashed JS/CSS chunk, the launch assets, manifest, icon, and static shell files. Navigation falls back only to cached `index.html`; missing asset requests are never answered with HTML.
+- The manifest `start_url` receives the same release fingerprint. Changing even only `index.html` therefore changes both the worker and its cache version.
+- An update installs into `waiting` state and the application presents an explicit, keyboard-focusable “Update now” control. Only that action sends `SKIP_WAITING`; `controllerchange` then reloads the page into the new shell. No unexpected mid-session activation occurs.
+- `dist/staticwebapp.config.json` is emitted with immutable one-year caching for `/assets/*`, no-cache service-worker/manifest policies, a strict CSP including only the intended Sociobot and PeerJS connections, `frame-ancestors 'none'`, `X-Frame-Options: DENY`, existing MIME protection, referrer policy, and microphone-only permissions policy.
+- The existing checkout URL remains exactly `https://api.sociobot.in/api/v1/products/milkdrop-web/checkout`; no checkout was opened or purchase made.
 
 ## Delivered
 
@@ -32,14 +31,18 @@ npm test
 npm run build
 npm run preview -- --host 127.0.0.1
 npm run audit
+npm run audit:pwa
 ```
 
-`npm run audit` expects the preview at `http://127.0.0.1:4173` (override with `AUDIT_URL`) and a Playwright Chromium install. It checks the launch and live-stage views with axe, captures mobile screenshots under `/tmp`, visits every content route, and fails on serious/critical accessibility findings or browser console errors.
+`npm run audit` expects the preview at `http://127.0.0.1:4173` (override with `AUDIT_URL`) and a Playwright Chromium install. It checks the launch and live-stage views with axe, captures mobile screenshots under `/tmp`, visits every content route, and fails on serious/critical accessibility findings or browser console errors. `npm run audit:pwa` starts an isolated static server from `dist`, clears Chromium’s normal HTTP cache, installs the worker, reloads offline, asserts cached JS/CSS MIME types, then simulates an app-only `index.html` release and verifies the explicit update flow replaces the old title/shell.
 
 Verification on 2026-08-27:
 
 - `npm test`: 3/3 beat-analysis tests passed.
-- `npm run build`: passed; `dist/index.html` present.
+- `npm run build`: passed; `dist/index.html`, generated `dist/sw.js`, generated manifest build version, and `dist/staticwebapp.config.json` present. The generated worker precached 14 release files, including all five emitted hashed JS/CSS assets.
+- `npm run audit:pwa`: passed fresh cache-cleared install/offline reload. Cached entry JS returned `text/javascript; charset=utf-8`; cached entry CSS returned `text/css; charset=utf-8`. Its app-only update simulation showed the update toast, required its button, and reloaded into the changed shell.
+- `npm run audit`: passed with zero landing/live-stage axe violations at serious/critical level and zero browser console/page errors.
+- Live, non-purchasing header/checkout checks: `GET https://api.sociobot.in/api/v1/products/milkdrop-web/checkout` returned `303` to Dodo checkout without following it, confirming the production $19 product is registered. The currently deployed site still returns the previous 30-second asset cache policy and lacks CSP/frame headers; deployment of this commit is required before the new `dist/staticwebapp.config.json` can be observed live.
 - Initial app JS: 31.90 KB raw / 12.21 KB gzip (lazy remote chunks excluded); CSS: 15.66 KB raw / 4.41 KB gzip.
 - Largest responsive hero: 90.74 KB WebP / 70.79 KB AVIF; mobile variants: 37.51 KB / 27.90 KB.
 - Playwright + axe at 390 × 844 with reduced motion: zero landing violations, zero live-stage violations, zero console/page errors; WebGL shader compiled and rendered.
@@ -52,4 +55,4 @@ Verification on 2026-08-27:
 - Beat/downbeat detection is intentionally heuristic and microphone-based; reverberant rooms, speech-heavy audio, or very soft material can delay tempo lock. The sensitivity control is available for correction.
 - “Cast-friendly” means using the browser or operating system’s native Chromecast tab/AirPlay screen-mirroring UI; the app does not call a proprietary casting SDK.
 - 4K mode is device-dependent and intentionally opt-in because older TV browsers can overheat or drop frames.
-- The factory must register `milkdrop-web` in Sociobot billing before checkout and verification can succeed in production. No product ID or payment-provider secret is embedded here.
+- Deployment is outside this repository. After the factory deploys this committed `dist`, rerun the live header curl checks to confirm Azure serves immutable `/assets/*`, no-cache `/sw.js`, CSP, and frame protection. No product ID or payment-provider secret is embedded here.

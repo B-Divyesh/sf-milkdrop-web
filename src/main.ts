@@ -21,7 +21,38 @@ window.addEventListener('offline', updateNetworkState);
 updateNetworkState();
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => undefined));
+  window.addEventListener('load', () => {
+    void registerServiceWorker().catch(() => undefined);
+  });
+}
+
+async function registerServiceWorker(): Promise<void> {
+  const banner = $('#update-banner');
+  const button = $<HTMLButtonElement>('#update-button');
+  let refreshing = false;
+  const registration = await navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
+  const showUpdate = (): void => {
+    if (registration.waiting) banner.removeAttribute('hidden');
+  };
+  showUpdate();
+  registration.addEventListener('updatefound', () => {
+    const installing = registration.installing;
+    if (!installing) return;
+    installing.addEventListener('statechange', () => {
+      if (installing.state === 'installed' && navigator.serviceWorker.controller) showUpdate();
+    });
+  });
+  button.addEventListener('click', () => {
+    if (!registration.waiting) return;
+    button.disabled = true;
+    button.textContent = 'Updating…';
+    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+  });
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
 }
 
 const remoteCode = new URL(location.href).searchParams.get('remote');

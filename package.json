@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/generate-sw.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "audit": "node scripts/browser-audit.mjs"
+    "audit": "node scripts/browser-audit.mjs",
+    "audit:pwa": "node scripts/pwa-audit.mjs"
   },
   "dependencies": {
     "peerjs": "^1.5.5",
