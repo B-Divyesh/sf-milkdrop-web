@@ -912,30 +912,10 @@
       "source_location": "L2"
     },
     {
-      "id": "peerjs_peerjs",
-      "label": "peerjs",
-      "_origin": "ast",
-      "community": 11,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "peerjs",
-      "source_file": "peerjs"
-    },
-    {
-      "id": "qrcode_qrcode",
-      "label": "qrcode",
-      "_origin": "ast",
-      "community": 12,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "qrcode",
-      "source_file": "qrcode"
-    },
-    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
-      "community": 13,
+      "community": 11,
       "file_type": "code",
       "norm_label": "vite.config.ts",
       "source_file": "vite.config.ts",
@@ -3268,5 +3248,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d65f99710a354c322aeb5f80d44cc46bcf63c7f0"
+  "built_at_commit": "50d66ab1a55e577e2807c7cab5ee1f179bcf771f"
 }
