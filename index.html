@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07120f" />
+    <meta name="description" content="Turn the music already playing in your room into beat-aware, full-screen botanical visuals. Audio never leaves your device." />
+    <title>Milkdrop Web — sound grows here</title>
+    <link rel="icon" href="/fern.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div id="offline-banner" class="offline-banner" role="status" hidden>You’re offline. The visualizer still works; remote pairing and license checks will wait.</div>
+    <header class="site-header" id="site-header">
+      <a class="wordmark" href="/" aria-label="Milkdrop Web home"><span class="fern-mark" aria-hidden="true">⌁</span> Milkdrop Web</a>
+      <nav aria-label="Primary">
+        <button class="text-button" id="remote-header" type="button">Phone remote</button>
+        <button class="text-button" id="venue-header" type="button">Venue pack</button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="landing" id="landing" aria-labelledby="page-title">
+        <div class="specimen-sheet">
+          <p class="kicker"><span>Field instrument 01</span><span>Local audio study</span></p>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1 id="page-title">Sound grows here.</h1>
+              <p class="lede">Open the mic. Fill the screen. Watch whatever is playing in the room become a living, beat-aware specimen.</p>
+              <div class="start-row">
+                <button class="primary-button" id="start-button" type="button"><span aria-hidden="true">●</span> Listen to the room</button>
+                <p class="privacy-note"><span aria-hidden="true">◉</span> Processed only on this device. Never recorded.</p>
+              </div>
+              <div class="permission-help" id="permission-help" hidden role="alert">
+                <strong id="permission-title">The microphone stayed closed.</strong>
+                <p id="permission-detail">Allow microphone access in your browser’s site settings, then try again.</p>
+                <div class="button-row">
+                  <button class="secondary-button" id="retry-button" type="button">Try the mic again</button>
+                  <button class="text-button dark" id="demo-button" type="button">Preview without a mic</button>
+                </div>
+              </div>
+            </div>
+            <figure class="hero-art">
+              <picture>
+                <source srcset="/assets/nocturnal-herbarium.avif" type="image/avif" />
+                <source srcset="/assets/nocturnal-herbarium.webp" type="image/webp" />
+                <img src="/assets/nocturnal-herbarium.webp" width="960" height="640" alt="A pressed fern unfurls into concentric sound waves and golden pollen on a dark field-guide plate." fetchpriority="high" decoding="async" />
+              </picture>
+              <figcaption><span>FIG. 01</span> Dryopteris sonora — a study in room sound</figcaption>
+            </figure>
+          </div>
+          <dl class="feature-index" aria-label="How it works">
+            <div><dt>01 / Listen</dt><dd>The room mic hears dynamics, not words.</dd></div>
+            <div><dt>02 / Find the pulse</dt><dd>Onsets and tempo shape every scene.</dd></div>
+            <div><dt>03 / Let it grow</dt><dd>Twelve original specimens rotate with the phrase.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="stage" id="stage" aria-label="Live music visualizer" hidden>
+        <canvas id="visual-canvas" aria-label="Animated abstract visualization of the microphone's volume, frequency balance, and detected beat"></canvas>
+        <img class="venue-logo" id="venue-logo" alt="Venue logo overlay" hidden />
+        <div class="stage-shade" aria-hidden="true"></div>
+        <div class="stage-top">
+          <p class="live-badge"><span class="live-dot" aria-hidden="true"></span><span id="input-label">Room mic live</span></p>
+          <p class="beat-readout"><span id="beat-state">Listening for a pulse</span><span id="tempo-value">— BPM</span></p>
+          <div class="stage-actions">
+            <button class="icon-button" id="remote-button" type="button" aria-label="Connect phone remote" title="Phone remote (R)">⌁</button>
+            <button class="icon-button" id="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Fullscreen (F)">⛶</button>
+            <button class="icon-button" id="hide-button" type="button" aria-label="Hide controls" title="Hide controls (H)">×</button>
+          </div>
+        </div>
+        <div class="control-drawer" id="control-drawer">
+          <div class="now-growing">
+            <p class="eyebrow">Now growing</p>
+            <p class="preset-title"><span id="preset-number">01</span> <span id="preset-name">Fern echo</span></p>
+          </div>
+          <div class="preset-nav" aria-label="Choose visual specimen">
+            <button class="arrow-button" id="previous-preset" type="button" aria-label="Previous preset">←</button>
+            <div class="preset-strip" id="preset-strip" role="list"></div>
+            <button class="arrow-button" id="next-preset" type="button" aria-label="Next preset">→</button>
+          </div>
+          <button class="secondary-button paper" id="controls-button" type="button">Tune</button>
+        </div>
+        <button class="show-controls" id="show-controls" type="button" hidden>Show controls <kbd>H</kbd></button>
+        <p class="stage-status" id="stage-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer id="site-footer">
+      <p>Made for rooms that already have music. Generated artwork disclosed in the <a href="/about">field notes</a>.</p>
+      <nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="https://github.com/B-Divyesh/sf-milkdrop-web">Source</a></nav>
+    </footer>
+
+    <dialog id="controls-dialog" aria-labelledby="controls-title">
+      <form method="dialog" class="dialog-shell">
+        <div class="dialog-heading"><div><p class="eyebrow">Specimen conditions</p><h2 id="controls-title">Tune the growth</h2></div><button class="icon-button dark-icon" value="cancel" aria-label="Close tuning controls">×</button></div>
+        <label class="range-label" for="intensity"><span>Motion intensity</span><output id="intensity-output">75%</output></label>
+        <input id="intensity" type="range" min="20" max="100" value="75" />
+        <label class="range-label" for="sensitivity"><span>Mic sensitivity</span><output id="sensitivity-output">50%</output></label>
+        <input id="sensitivity" type="range" min="20" max="100" value="50" />
+        <label class="select-label" for="palette-select">Pigment set<select id="palette-select"><option value="lichen">Lichen & pollen</option><option value="coral">Coral & moss</option><option value="moon">Moonlit cyanotype</option><option value="plum">Plum & foxglove</option></select></label>
+        <label class="toggle-label" for="auto-rotate"><span><strong>Phrase-aware rotation</strong><small>Change specimen after roughly 16 beats</small></span><input id="auto-rotate" type="checkbox" checked /></label>
+        <div class="venue-inline" id="venue-tools" hidden>
+          <p class="eyebrow">Venue pack tools</p>
+          <label class="select-label" for="logo-file">Local logo overlay<input id="logo-file" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" /></label>
+          <label class="toggle-label" for="four-k"><span><strong>4K tuning</strong><small>Sharper output; uses more GPU power</small></span><input id="four-k" type="checkbox" /></label>
+        </div>
+        <div class="dialog-footer"><button class="danger-button" id="stop-button" type="button">Stop listening</button><button class="primary-button compact" value="default">Apply tuning</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="remote-dialog" aria-labelledby="remote-title">
+      <div class="dialog-shell">
+        <div class="dialog-heading"><div><p class="eyebrow">Private control link</p><h2 id="remote-title">Use your phone as a remote</h2></div><button class="icon-button dark-icon dialog-close" aria-label="Close phone remote">×</button></div>
+        <p>Scan once. Your phone sends preset and colour controls directly to this screen; microphone audio never leaves it.</p>
+        <div class="remote-pairing">
+          <div class="qr-frame" id="qr-frame" aria-label="QR code for the phone remote"><span class="loading-leaf" aria-hidden="true">⌁</span></div>
+          <div><p class="eyebrow">Room code</p><p class="room-code" id="room-code">Preparing…</p><p class="muted" id="remote-status" role="status" aria-live="polite">Creating a private room…</p><button class="secondary-button" id="copy-remote" type="button">Copy remote link</button></div>
+        </div>
+        <details><summary>Connection note</summary><p class="small-copy">Pairing uses PeerJS’s public signalling service to introduce the two browsers. Control messages then travel peer to peer. If a network blocks WebRTC, the visualizer keeps working normally.</p></details>
+      </div>
+    </dialog>
+
+    <dialog id="venue-dialog" aria-labelledby="venue-title">
+      <div class="dialog-shell venue-dialog-shell">
+        <div class="dialog-heading"><div><p class="eyebrow">One-time license · $19 USD</p><h2 id="venue-title">Take the field guide to the venue</h2></div><button class="icon-button dark-icon dialog-close" aria-label="Close venue pack">×</button></div>
+        <ul class="venue-list"><li>Four rare specimens, for twelve total</li><li>Local logo overlay — the image stays on this device</li><li>Sharper 4K rendering controls</li></ul>
+        <a class="primary-button link-button" href="https://api.sociobot.in/api/v1/products/milkdrop-web/checkout">Buy the venue pack — $19</a>
+        <p class="small-copy">One-time purchase. Sociobot/Dodo is the merchant of record and handles refunds. The eight free specimens remain yours to use.</p>
+        <hr />
+        <form id="restore-form"><label for="license-input">Have a license? Paste it here.</label><div class="restore-row"><input id="license-input" name="license" autocomplete="off" required /><button class="secondary-button" type="submit">Restore purchase</button></div><p class="form-message" id="license-message" role="status" aria-live="polite"></p></form>
+        <p class="legal-links"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

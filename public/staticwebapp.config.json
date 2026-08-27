@@ -1,0 +1,9 @@
+{
+  "navigationFallback": { "rewrite": "/index.html", "exclude": ["/assets/*", "/*.svg", "/*.js", "/*.css", "/*.webmanifest"] },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), geolocation=(), microphone=(self)"
+  },
+  "mimeTypes": { ".webmanifest": "application/manifest+json" }
+}

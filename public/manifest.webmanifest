@@ -1,0 +1,10 @@
+{
+  "name": "Milkdrop Web",
+  "short_name": "Milkdrop",
+  "description": "Mic-driven, beat-aware visuals for the room.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07120f",
+  "theme_color": "#07120f",
+  "icons": [{"src":"/fern.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
