@@ -201,7 +201,6 @@ summary { min-height: 44px; padding-block: .7rem; cursor: pointer; font-weight: 
   .start-row, .primary-button { width: 100%; }
   .hero-art { min-height: 280px; }
   .hero-art figcaption { font-size: .7rem; }
-  .stage-actions .icon-button:first-child { display: none; }
   .control-drawer { left: 0; right: 0; bottom: 0; border-inline: 0; border-bottom: 0; padding-bottom: max(.8rem, env(safe-area-inset-bottom)); }
   .preset-strip { max-width: calc(100vw - 128px); }
   .dialog-shell { padding: 1.25rem; }

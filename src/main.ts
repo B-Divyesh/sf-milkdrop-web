@@ -103,7 +103,7 @@ function setupVisualizer(): void {
   const autoRotate = $<HTMLInputElement>('#auto-rotate');
   const fourK = $<HTMLInputElement>('#four-k');
   const saved = readPreferences();
-  intensity.value = String(saved.intensity ?? (reduceMotion ? 35 : 75));
+  intensity.value = String(reduceMotion ? Math.min(saved.intensity ?? 35, 35) : (saved.intensity ?? 75));
   sensitivity.value = String(saved.sensitivity ?? 50);
   palette.value = saved.palette ?? 'lichen';
   autoRotate.checked = saved.autoRotate ?? !reduceMotion;
@@ -114,7 +114,6 @@ function setupVisualizer(): void {
     const button = document.createElement('button');
     button.className = `preset-chip${preset.premium ? ' locked' : ''}`;
     button.type = 'button';
-    button.setAttribute('role', 'listitem');
     button.setAttribute('aria-label', `${String(index + 1).padStart(2, '0')}: ${preset.name}${preset.premium ? ', Venue Pack' : ''}`);
     button.textContent = String(index + 1).padStart(2, '0');
     button.addEventListener('click', () => selectPreset(index));

@@ -35,7 +35,7 @@ All body pairings meet WCAG AA. Pollen is used as a fill or large marker, not sm
 
 - The primary action is a large lozenge labelled “Listen to the room”. Its mic icon, privacy note, and current capability status are adjacent.
 - Controls appear as a bottom specimen drawer while visuals run. It can be hidden with `H`; any pointer movement or focus restores it.
-- Presets are a horizontally scrollable strip of numbered specimens. Left/right arrows change specimens, space toggles listening, `F` enters fullscreen, `C` opens controls, and `H` hides chrome.
+- Presets are a horizontally scrollable strip of numbered specimens. Left/right arrows change specimens, space stops listening, `F` enters fullscreen, `C` opens controls, and `H` hides chrome.
 - Beat feedback is a breathing ring and plain-language “Beat found” / “Listening for a pulse” status. It never depends on colour alone.
 - The remote is local-network peer pairing built with WebRTC. A QR is convenient, but the readable room link and copy action are always present. No audio or visualizer data is relayed through a server.
 

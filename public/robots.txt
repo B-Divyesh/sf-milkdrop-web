@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://milkdrop-web.sociobot.in/sitemap.xml

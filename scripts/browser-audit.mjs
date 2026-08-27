@@ -12,7 +12,7 @@ page.on('pageerror', (error) => errors.push(error.message));
 await page.goto(base, { waitUntil: 'networkidle' });
 const landing = await new AxeBuilder({ page }).analyze();
 await page.screenshot({ path: '/tmp/milkdrop-landing-mobile.png', fullPage: true });
-await page.getByRole('button', { name: 'Preview without a mic' }).evaluate((button) => {
+await page.locator('#demo-button').evaluate((button) => {
   const help = document.querySelector('#permission-help');
   help?.removeAttribute('hidden');
   button.click();
@@ -30,5 +30,5 @@ for (const route of ['/privacy', '/terms', '/about']) {
 
 await browser.close();
 const serious = [...landing.violations, ...stage.violations].filter((result) => result.impact === 'serious' || result.impact === 'critical');
-console.log(JSON.stringify({ landingViolations: landing.violations.length, stageViolations: stage.violations.length, serious: serious.map((item) => item.id), consoleErrors: errors }, null, 2));
+console.log(JSON.stringify({ landingViolations: landing.violations.map((item) => item.id), stageViolations: stage.violations.map((item) => item.id), serious: serious.map((item) => item.id), consoleErrors: errors }, null, 2));
 if (serious.length || errors.length) process.exitCode = 1;
