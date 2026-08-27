@@ -1,0 +1,8 @@
+{
+  "slug": "milkdrop-web",
+  "title": "Milkdrop Web: mic-driven, beat-aware music visualizer for TVs and projectors — no audio routing",
+  "artifact_class": "static-web",
+  "smallest_useful_product": "Full-screen WebGL visualizer with 12 original shader presets driven by mic FFT + onset/beat detection, phrase-aware auto-rotation, and a local phone remote.",
+  "monetization": "freemium — free presets; one-time venue pack",
+  "privacy": "Microphone audio is processed locally and never recorded or uploaded."
+}
