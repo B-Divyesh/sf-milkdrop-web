@@ -6,6 +6,7 @@
       "src_main",
       "src_main_escapehtml",
       "src_main_readpreferences",
+      "src_main_registerserviceworker",
       "src_main_remotecode",
       "src_main_renderphoneremote",
       "src_main_updatenetworkstate",
@@ -25,6 +26,26 @@
       "src_visualizer"
     ],
     "1": [
+      "package",
+      "package_dependencies",
+      "package_dependencies_peerjs",
+      "package_dependencies_qrcode",
+      "package_json_qrcode",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_audit",
+      "package_scripts_audit_pwa",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_scripts_test_watch",
+      "package_type",
+      "package_version",
+      "peerjs"
+    ],
+    "2": [
       "ref_dom",
       "ref_dom_iterable",
       "ref_es2022",
@@ -43,25 +64,6 @@
       "tsconfig_compileroptions_types",
       "tsconfig_compileroptions_usedefineforclassfields",
       "tsconfig_include"
-    ],
-    "2": [
-      "package",
-      "package_dependencies",
-      "package_dependencies_peerjs",
-      "package_dependencies_qrcode",
-      "package_json_peerjs",
-      "package_json_qrcode",
-      "package_name",
-      "package_private",
-      "package_scripts",
-      "package_scripts_audit",
-      "package_scripts_build",
-      "package_scripts_dev",
-      "package_scripts_preview",
-      "package_scripts_test",
-      "package_scripts_test_watch",
-      "package_type",
-      "package_version"
     ],
     "3": [
       "axe_core_playwright",
@@ -129,38 +131,57 @@
       "src_visualizer_visualizer_setpreset"
     ],
     "8": [
+      "scripts_pwa_audit",
+      "scripts_pwa_audit_address",
+      "scripts_pwa_audit_failures",
+      "scripts_pwa_audit_first",
+      "scripts_pwa_audit_mimes",
+      "scripts_pwa_audit_regeneration",
+      "scripts_pwa_audit_second",
+      "scripts_pwa_audit_secondindex",
+      "scripts_pwa_audit_server"
+    ],
+    "9": [
+      "scripts_generate_sw",
+      "scripts_generate_sw_filesin",
+      "scripts_generate_sw_manifestpath",
+      "scripts_generate_sw_precache",
+      "scripts_generate_sw_version"
+    ],
+    "10": [
       "src_audio_roomaudio",
       "src_audio_roomaudio_loop",
       "src_audio_roomaudio_start",
       "src_audio_roomaudio_startdemo",
       "src_audio_roomaudio_stop"
     ],
-    "9": [
+    "11": [
       "scripts_browser_audit",
       "scripts_browser_audit_errors",
       "scripts_browser_audit_serious"
     ],
-    "10": [
-      "public_sw",
-      "public_sw_shell"
+    "12": [
+      "qrcode_qrcode"
     ],
-    "11": [
+    "13": [
       "vite_config"
     ]
   },
   "cohesion": {
-    "0": 0.1341991341991342,
+    "0": 0.12648221343873517,
     "1": 0.1111111111111111,
-    "2": 0.11764705882352941,
+    "2": 0.1111111111111111,
     "3": 0.15384615384615385,
     "4": 0.2545454545454545,
     "5": 0.36363636363636365,
     "6": 0.3333333333333333,
     "7": 0.28888888888888886,
-    "8": 0.7,
-    "9": 0.6666666666666666,
-    "10": 1.0,
-    "11": 1.0
+    "8": 0.2222222222222222,
+    "9": 0.4,
+    "10": 0.7,
+    "11": 0.6666666666666666,
+    "12": 1.0,
+    "13": 1.0
   },
   "gods": [
     {
@@ -186,7 +207,7 @@
     {
       "id": "package_scripts",
       "label": "scripts",
-      "degree": 7
+      "degree": 8
     },
     {
       "id": "src_audio_analysis_audioframe",
@@ -204,13 +225,13 @@
       "degree": 6
     },
     {
-      "id": "src_main_setupvisualizer_handleremote",
-      "label": "handleRemote()",
+      "id": "src_main_setupvisualizer_selectpreset",
+      "label": "selectPreset()",
       "degree": 6
     },
     {
-      "id": "src_main_setupvisualizer_selectpreset",
-      "label": "selectPreset()",
+      "id": "src_main_setupvisualizer_handleremote",
+      "label": "handleRemote()",
       "degree": 6
     }
   ],
