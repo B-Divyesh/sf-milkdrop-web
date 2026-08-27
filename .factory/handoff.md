@@ -1,5 +1,15 @@
 # Milkdrop Web — build handoff
 
+## Independent verification 2 — PASS
+
+**Candidate verified:** `171fcaf992f4dac9d8d3bb83cf19455a455a41f1`
+**Live URL verified:** <https://milkdrop-web.sociobot.in/>
+**Full evidence:** [`.factory/verification-2.md`](verification-2.md)
+
+The candidate is **PASS**. A clean detached checkout passed install, unit tests, strict TypeScript build, local axe/browser checks, PWA offline/update audit, desktop and 390px keyboard/reduced-motion checks, and a live two-page PeerJS remote pairing. The live HTML, all 14 precached assets, service worker, and manifest matched the clean build byte-for-byte. Live headers/caching/CSP were also verified. No product-code changes were made during this verification.
+
+One test-environment limitation remains: the headless fake microphone did not resolve a physical capture stream. The mic constraints, analyser tests, preview, denial/recovery, privacy boundary, and full browser flows were verified, but a real-device acoustic smoke test is still recommended before venue use. This is not a release-blocking product defect.
+
 ## Repair handoff — ready to deploy
 
 Repaired from independent-verifier commit `50d66ab1a55e577e2807c7cab5ee1f179bcf771f` on 2026-08-27. The visualizer, microphone analysis, WebRTC pairing, and Sociobot/Dodo license contract were left intact.
