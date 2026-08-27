@@ -1,5 +1,18 @@
 # Milkdrop Web — build handoff
 
+## Independent verification verdict — FAIL
+
+Verified 2026-08-27 at commit `d65f99710a354c322aeb5f80d44cc46bcf63c7f0` against `https://milkdrop-web.sociobot.in`.
+
+The free visualizer's clean install, tests, strict production build, desktop/mobile keyboard flows, mic constraints/recovery, and axe browser audits pass. The live HTML, entry JS, CSS, and service worker match the candidate byte-for-byte.
+
+**Release is blocked** by two high-severity defects:
+
+- The displayed Venue Pack checkout URL returns `HTTP 404 {"error":"enabled factory product","status":404}`. The production Sociobot product must be registered/enabled and its full checkout/return-license flow retested.
+- The PWA precaches only `/`, `/fern.svg`, and `/manifest.webmanifest`. With HTTP cache cleared, an offline reload serves HTML for the missing CSS/JS assets and fails strict MIME loading. An app-only update with unchanged `sw.js` also leaves users on the old cached shell. Precache/version all required hashed shell assets and rerun fresh-install, offline, and update tests.
+
+See `.factory/verification.md` for exact commands, results, remaining medium findings (non-immutable hashed-asset caching and missing CSP/frame policy), and remediation evidence required for a PASS.
+
 ## Delivered
 
 - A production Vite + strict TypeScript static app, with output at `dist/index.html`.
