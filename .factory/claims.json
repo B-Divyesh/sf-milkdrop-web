@@ -15,7 +15,7 @@
   },
   {
     "id": "microphone-privacy",
-    "claim": "The visualizer uses the room microphone without audio routing; audio is analyzed in browser memory and is not recorded or uploaded.",
+    "claim": "The visualizer uses the room microphone without audio routing; audio stays in browser memory, microphone tracks close on stop, and no tracker receives it.",
     "where": "landing facts and boundaries, privacy page, README",
     "test": "npm run test:claims -- --grep @claim:microphone-privacy",
     "sandbox": "stub microphone and Web Audio, intercept all requests, instrument recording and speech APIs, and inspect browser storage"
@@ -29,14 +29,14 @@
   },
   {
     "id": "visual-count",
-    "claim": "Eight visuals are free and Venue Pack adds four, for twelve total.",
+    "claim": "Eight WebGL visuals are free and Venue Pack adds four, for twelve total.",
     "where": "landing facts, Venue Pack section and dialog, README",
     "test": "npm run test:claims -- --grep @claim:visual-count",
     "sandbox": "fresh /?demo=1; count free and paid visual controls, select the eighth, and verify the ninth opens the paid details"
   },
   {
     "id": "venue-pack",
-    "claim": "The one-time $19 USD Venue Pack adds four visuals, a session-only logo overlay, and a 3840 by 2160 canvas control.",
+    "claim": "The one-time $19 USD Venue Pack adds four visuals, a session-only logo overlay, and a 3840 by 2160 canvas control; inactive licenses stay locked.",
     "where": "Venue Pack section, dialog, terms, README",
     "test": "npm run test:claims -- --grep @claim:venue-pack",
     "sandbox": "enter through /?demo=1, switch to real mode with a cached sandbox verdict, upload a logo, enable 4K, and verify checkout copy"

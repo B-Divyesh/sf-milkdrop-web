@@ -9,6 +9,7 @@ test('@claim:demo-sample sample signal runs and changes the visual', async ({ pa
   await expect(page.locator('#input-label')).toHaveText('Sample track · 120 BPM');
   await expect(page.locator('#tempo-value')).toHaveText('120 BPM');
   await expect.poll(async () => Number(await stage.getAttribute('data-frame-count'))).toBeGreaterThan(5);
+  expect(await page.locator('#visual-canvas').evaluate((canvas: HTMLCanvasElement) => Boolean(canvas.getContext('webgl')))).toBe(true);
   await expect.poll(async () => Number(await stage.getAttribute('data-beat-count')), { timeout: 12_000 }).toBeGreaterThanOrEqual(16);
   await expect(page.locator('#preset-name')).toHaveText('Pollen orbit');
   await page.locator('#next-preset').click();
@@ -58,6 +59,9 @@ test('@claim:microphone-privacy microphone uses local analysis without recording
   expect(evidence.speechCalls).toBe(0);
   expect([...origins]).toEqual(['http://127.0.0.1:4173']);
   expect(await page.evaluate(() => Object.keys(localStorage).every((key) => !/audio|record|blob/i.test(key)))).toBe(true);
+  await page.locator('#stop-button').evaluate((button: HTMLButtonElement) => button.click());
+  await expect(page).toHaveURL('/');
+  expect(await page.evaluate(() => Boolean((window as typeof window & { __microphoneStopped?: boolean }).__microphoneStopped))).toBe(true);
 });
 
 test('@claim:offline-reload demo reloads and remains usable offline', async ({ page, context }) => {
@@ -92,6 +96,10 @@ test('@claim:visual-count eight visuals are free and Venue Pack adds four', asyn
 
 test('@claim:venue-pack paid tools produce the stated local outcomes', async ({ page }) => {
   await installMicrophoneStub(page);
+  const verificationRequests: string[] = [];
+  page.on('request', (request) => {
+    if (request.url().includes('/products/milkdrop-web/verify')) verificationRequests.push(request.url());
+  });
   await page.goto('/?demo=1');
   await page.locator('#start-real').click();
   await page.evaluate(() => {
@@ -111,7 +119,17 @@ test('@claim:venue-pack paid tools produce the stated local outcomes', async ({ 
   await expect(page.locator('#visual-canvas')).toHaveAttribute('data-resolution-cap', '3840x2160');
   await page.locator('#venue-dialog').evaluate((dialog: HTMLDialogElement) => dialog.showModal());
   await expect(page.locator('#venue-dialog')).toContainText('One-time license · $19 USD');
+  await expect(page.locator('#venue-dialog')).toContainText('Sociobot/Dodo is the merchant of record');
   await expect(page.locator('#venue-dialog a[href*="/checkout"]')).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/milkdrop-web/checkout');
+  expect(verificationRequests).toHaveLength(0);
+  await page.evaluate(() => {
+    localStorage.setItem('sb_license:milkdrop-web:verdict', JSON.stringify({ valid: false, checkedAt: Date.now() }));
+  });
+  await page.reload();
+  await page.locator('#start-button').click();
+  await page.locator('#controls-button').click();
+  await expect(page.locator('#venue-tools')).toBeHidden();
+  await expect(page.locator('.preset-chip.locked')).toHaveCount(4);
 });
 
 test('@claim:controls-access controls work by touch and keyboard', async ({ page }) => {

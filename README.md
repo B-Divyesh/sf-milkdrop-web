@@ -36,8 +36,6 @@ npm ci
 npm run dev
 ```
 
-Microphone access requires a secure browser context. Both `localhost` and the production HTTPS site provide one.
-
 ## Test and build
 
 ```bash
