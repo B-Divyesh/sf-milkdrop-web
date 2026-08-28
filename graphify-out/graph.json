@@ -944,20 +944,10 @@
       "source_location": "L32"
     },
     {
-      "id": "qrcode_qrcode",
-      "label": "qrcode",
-      "_origin": "ast",
-      "community": 12,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "qrcode",
-      "source_file": "qrcode"
-    },
-    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "file_type": "code",
       "norm_label": "vite.config.ts",
       "source_file": "vite.config.ts",
@@ -3543,5 +3533,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "171fcaf992f4dac9d8d3bb83cf19455a455a41f1"
+  "built_at_commit": "7650ddcc2beae9df49ca74753ea6d7e672e698ca"
 }
