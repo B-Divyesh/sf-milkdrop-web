@@ -61,6 +61,7 @@ test('@claim:microphone-privacy microphone uses local analysis without recording
 });
 
 test('@claim:offline-reload demo reloads and remains usable offline', async ({ page, context }) => {
+  const cdp = await context.newCDPSession(page);
   await page.goto('/?demo=1');
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(async () => {
@@ -69,6 +70,7 @@ test('@claim:offline-reload demo reloads and remains usable offline', async ({ p
   });
   await page.reload();
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
+  await cdp.send('Network.clearBrowserCache');
   await context.setOffline(true);
   await page.reload({ waitUntil: 'domcontentloaded' });
   await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'demo');

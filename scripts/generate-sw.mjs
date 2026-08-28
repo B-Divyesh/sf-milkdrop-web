@@ -64,7 +64,7 @@ self.addEventListener('fetch', (event) => {
     }));
     return;
   }
-  event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));
+  event.respondWith(caches.match(new URL(request.url).pathname).then((cached) => cached || fetch(request)));
 });
 `;
 
