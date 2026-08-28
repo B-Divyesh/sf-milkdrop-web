@@ -19,7 +19,7 @@ All blocking and additional findings in `.factory/review-1.md` are resolved. The
 
 ## Clean-clone verification
 
-Final proof clone: `/tmp/milkdrop-final-proof-93NhEO` at commit `7de7208357e3ce47f9916edb96ad666937a9e817`.
+Final deployed-code proof clone: `/tmp/milkdrop-deployed-proof-gJ9Cfw` at commit `f0413008f696d60d37c12daaedd5db570ef14846`.
 
 - `npm ci`: passed; 0 vulnerabilities.
 - `npm test`: passed, 3/3 unit tests.
@@ -64,7 +64,16 @@ Static deployment uses:
 /opt/fleet/lib/deploy-static.sh milkdrop-web /work/repo/dist
 ```
 
-Live verification evidence will be appended after the work-order deployment.
+Deployment succeeded through that command with Azure deployment ID `50d18c1c-1541-46df-8f4c-9fb4c78f4b64`.
+
+Live URL: <https://milkdrop-web.sociobot.in>
+
+- `/opt/fleet/lib/verify-url.sh`: passed; HTTP 200, correct title and language, one h1, main landmark, complete image alt text, labelled buttons, and zero console errors. Evidence: `/tmp/milkdrop-verify-final/`.
+- Live `/demo`, `/privacy`, `/terms`, and `/about`: HTTP 200 with correct client-rendered titles and one h1.
+- Live `/?demo=1`: demo banner and running demo stage verified at 390 × 844.
+- Live unknown route: HTTP 404 with title **Page not found — Milkdrop Web** and the designed field-guide 404 page.
+- Live security headers: CSP, HSTS, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, referrer policy, and microphone-only permissions policy present.
+- `npx @axe-core/cli https://milkdrop-web.sociobot.in`: zero violations. Evidence: `/tmp/milkdrop-axe-live.json`.
 
 ## Known gaps
 
