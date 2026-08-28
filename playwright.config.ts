@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
   fullyParallel: false,
+  workers: 1,
   outputDir: 'test-results/artifacts',
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   use: {

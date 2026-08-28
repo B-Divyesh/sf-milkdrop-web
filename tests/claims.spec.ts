@@ -122,6 +122,7 @@ test('@claim:controls-access controls work by touch and keyboard', async ({ page
   await page.locator('#palette-select').selectOption('coral');
   await page.locator('#intensity').fill('60');
   await page.locator('#sensitivity').fill('65');
+  await page.locator('#auto-rotate').uncheck();
   await page.locator('#controls-dialog button[value="default"]').click();
   await expect(page.locator('#stage')).toHaveAttribute('data-palette', 'coral');
   await expect(page.locator('#stage')).toHaveAttribute('data-intensity', '60');
