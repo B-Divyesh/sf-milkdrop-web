@@ -63,6 +63,10 @@ test('@claim:microphone-privacy microphone uses local analysis without recording
 test('@claim:offline-reload demo reloads and remains usable offline', async ({ page, context }) => {
   await page.goto('/?demo=1');
   await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.waitForFunction(async () => {
+    const script = document.querySelector<HTMLScriptElement>('script[type="module"]');
+    return Boolean(script && await caches.match(new URL(script.src).pathname));
+  });
   await page.reload();
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   await context.setOffline(true);
