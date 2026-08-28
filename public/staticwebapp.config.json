@@ -21,8 +21,10 @@
     { "route": "/demo", "rewrite": "/index.html" },
     { "route": "/privacy", "rewrite": "/index.html" },
     { "route": "/terms", "rewrite": "/index.html" },
-    { "route": "/about", "rewrite": "/index.html" },
-    { "route": "/*", "rewrite": "/404.html", "statusCode": 404 }
+    { "route": "/about", "rewrite": "/index.html" }
   ],
+  "responseOverrides": {
+    "404": { "rewrite": "/404.html" }
+  },
   "mimeTypes": { ".webmanifest": "application/manifest+json" }
 }

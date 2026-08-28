@@ -201,7 +201,14 @@ test('@claim:static-build production build emits the static deploy contract', as
   expect(existsSync('dist/index.html')).toBe(true);
   expect(existsSync('dist/staticwebapp.config.json')).toBe(true);
   expect(existsSync('dist/sw.js')).toBe(true);
-  expect(readFileSync('dist/staticwebapp.config.json', 'utf8')).toContain('X-Content-Type-Options');
+  const staticConfig = JSON.parse(readFileSync('dist/staticwebapp.config.json', 'utf8')) as {
+    globalHeaders: Record<string, string>;
+    routes: Array<{ rewrite?: string; statusCode?: number }>;
+    responseOverrides: Record<string, { rewrite: string }>;
+  };
+  expect(staticConfig.globalHeaders['X-Content-Type-Options']).toBe('nosniff');
+  expect(staticConfig.responseOverrides['404'].rewrite).toBe('/404.html');
+  expect(staticConfig.routes.every((route) => !(route.rewrite && route.statusCode))).toBe(true);
   const initialJs = readdirSync('dist/assets').filter((name) => /^index-.*\.js$/.test(name));
   expect(initialJs).toHaveLength(1);
   expect(statSync(`dist/assets/${initialJs[0]}`).size).toBeLessThan(200_000);
