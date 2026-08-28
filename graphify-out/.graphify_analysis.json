@@ -2,34 +2,44 @@
   "communities": {
     "0": [
       "src_legal",
-      "src_legal_renderlegal",
+      "src_legal_about",
+      "src_legal_escapehtml",
+      "src_legal_getstaticpage",
+      "src_legal_notfoundpage",
+      "src_legal_privacy",
+      "src_legal_staticpage",
+      "src_legal_terms",
       "src_main",
       "src_main_escapehtml",
+      "src_main_focusrouteheading",
+      "src_main_initialstage",
+      "src_main_main",
       "src_main_readpreferences",
       "src_main_registerserviceworker",
-      "src_main_remotecode",
+      "src_main_rendercurrentroute",
       "src_main_renderphoneremote",
+      "src_main_renderstaticpage",
+      "src_main_routeto",
+      "src_main_setupvisualizer_stop",
+      "src_main_updatemetadata",
       "src_main_updatenetworkstate",
-      "src_presets",
-      "src_presets_palettes",
-      "src_presets_preset",
-      "src_presets_presets",
       "src_remote",
       "src_remote_createcode",
       "src_remote_phoneremote",
       "src_remote_phoneremote_connect",
       "src_remote_phoneremote_send",
+      "src_remote_phoneremote_stop",
       "src_remote_remotecommand",
       "src_remote_screenremote",
       "src_remote_screenremote_start",
-      "src_remote_screenremote_stop",
-      "src_visualizer"
+      "src_remote_screenremote_stop"
     ],
     "1": [
       "package",
       "package_dependencies",
       "package_dependencies_peerjs",
       "package_dependencies_qrcode",
+      "package_json_peerjs",
       "package_json_qrcode",
       "package_name",
       "package_private",
@@ -40,10 +50,11 @@
       "package_scripts_dev",
       "package_scripts_preview",
       "package_scripts_test",
+      "package_scripts_test_browser",
+      "package_scripts_test_claims",
       "package_scripts_test_watch",
       "package_type",
-      "package_version",
-      "peerjs"
+      "package_version"
     ],
     "2": [
       "ref_dom",
@@ -70,11 +81,13 @@
       "package_devdependencies",
       "package_devdependencies_axe_core_playwright",
       "package_devdependencies_playwright",
+      "package_devdependencies_playwright_test",
       "package_devdependencies_types_qrcode",
       "package_devdependencies_typescript",
       "package_devdependencies_vite",
       "package_devdependencies_vitest",
       "playwright",
+      "playwright_test",
       "types_qrcode",
       "typescript",
       "vite",
@@ -91,9 +104,18 @@
       "src_audio_analysis_test",
       "src_audio_framelistener",
       "src_audio_quiet_frame",
-      "src_visualizer_visualizer_setaudio"
+      "src_presets",
+      "src_presets_palettes",
+      "src_presets_preset",
+      "src_presets_presets",
+      "src_visualizer"
     ],
     "5": [
+      "src_audio_roomaudio",
+      "src_audio_roomaudio_loop",
+      "src_audio_roomaudio_start",
+      "src_audio_roomaudio_startdemo",
+      "src_audio_roomaudio_stop",
       "src_main_opendialog",
       "src_main_setupvisualizer",
       "src_main_setupvisualizer_applytuning",
@@ -103,10 +125,22 @@
       "src_main_setupvisualizer_renderpreset",
       "src_main_setupvisualizer_selectpreset",
       "src_main_setupvisualizer_showstatus",
-      "src_main_setupvisualizer_stop",
       "src_main_setupvisualizer_updateoutputs"
     ],
     "6": [
+      "src_visualizer_visualizer",
+      "src_visualizer_visualizer_constructor",
+      "src_visualizer_visualizer_createprogram",
+      "src_visualizer_visualizer_destroy",
+      "src_visualizer_visualizer_loop",
+      "src_visualizer_visualizer_resize",
+      "src_visualizer_visualizer_setaudio",
+      "src_visualizer_visualizer_sethighresolution",
+      "src_visualizer_visualizer_setintensity",
+      "src_visualizer_visualizer_setpalette",
+      "src_visualizer_visualizer_setpreset"
+    ],
+    "7": [
       "src_license",
       "src_license_cachedverdict",
       "src_license_licensemanager",
@@ -117,18 +151,6 @@
       "src_license_licensemanager_setunlocked",
       "src_license_licensemanager_verify",
       "src_license_verifyresponse"
-    ],
-    "7": [
-      "src_visualizer_visualizer",
-      "src_visualizer_visualizer_constructor",
-      "src_visualizer_visualizer_createprogram",
-      "src_visualizer_visualizer_destroy",
-      "src_visualizer_visualizer_loop",
-      "src_visualizer_visualizer_resize",
-      "src_visualizer_visualizer_sethighresolution",
-      "src_visualizer_visualizer_setintensity",
-      "src_visualizer_visualizer_setpalette",
-      "src_visualizer_visualizer_setpreset"
     ],
     "8": [
       "scripts_pwa_audit",
@@ -149,46 +171,61 @@
       "scripts_generate_sw_version"
     ],
     "10": [
-      "src_audio_roomaudio",
-      "src_audio_roomaudio_loop",
-      "src_audio_roomaudio_start",
-      "src_audio_roomaudio_startdemo",
-      "src_audio_roomaudio_stop"
-    ],
-    "11": [
       "scripts_browser_audit",
       "scripts_browser_audit_errors",
-      "scripts_browser_audit_serious"
+      "scripts_browser_audit_results",
+      "scripts_browser_audit_violations"
+    ],
+    "11": [
+      "tests_claims_spec",
+      "tests_helpers",
+      "tests_helpers_installmicrophonestub"
     ],
     "12": [
+      "peerjs_peerjs"
+    ],
+    "13": [
+      "playwright_config"
+    ],
+    "14": [
+      "qrcode_qrcode"
+    ],
+    "15": [
+      "tests_product_spec"
+    ],
+    "16": [
       "vite_config"
     ]
   },
   "cohesion": {
-    "0": 0.12648221343873517,
-    "1": 0.1111111111111111,
+    "0": 0.10080645161290322,
+    "1": 0.1,
     "2": 0.1111111111111111,
-    "3": 0.15384615384615385,
-    "4": 0.2545454545454545,
-    "5": 0.36363636363636365,
-    "6": 0.3333333333333333,
-    "7": 0.28888888888888886,
+    "3": 0.13333333333333333,
+    "4": 0.19047619047619047,
+    "5": 0.26666666666666666,
+    "6": 0.2545454545454545,
+    "7": 0.3333333333333333,
     "8": 0.2222222222222222,
     "9": 0.4,
-    "10": 0.7,
-    "11": 0.6666666666666666,
-    "12": 1.0
+    "10": 0.5,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0
   },
   "gods": [
     {
       "id": "src_main_setupvisualizer",
       "label": "setupVisualizer()",
-      "degree": 16
+      "degree": 15
     },
     {
       "id": "src_visualizer_visualizer",
       "label": "Visualizer",
-      "degree": 13
+      "degree": 12
     },
     {
       "id": "tsconfig_compileroptions",
@@ -196,13 +233,18 @@
       "degree": 10
     },
     {
-      "id": "src_license_licensemanager",
-      "label": "LicenseManager",
-      "degree": 8
-    },
-    {
       "id": "package_scripts",
       "label": "scripts",
+      "degree": 10
+    },
+    {
+      "id": "src_main_rendercurrentroute",
+      "label": "renderCurrentRoute()",
+      "degree": 9
+    },
+    {
+      "id": "src_license_licensemanager",
+      "label": "LicenseManager",
       "degree": 8
     },
     {
@@ -211,18 +253,13 @@
       "degree": 6
     },
     {
-      "id": "src_audio_analysis_audioframe",
-      "label": "AudioFrame",
-      "degree": 6
-    },
-    {
       "id": "src_audio_analysis_beattracker",
       "label": "BeatTracker",
       "degree": 6
     },
     {
-      "id": "src_main_setupvisualizer_handleremote",
-      "label": "handleRemote()",
+      "id": "src_main_renderphoneremote",
+      "label": "renderPhoneRemote()",
       "degree": 6
     },
     {
@@ -233,15 +270,26 @@
   ],
   "surprises": [
     {
-      "source": "Visualizer",
-      "target": "AudioFrame",
+      "source": "renderCurrentRoute()",
+      "target": "getStaticPage()",
       "source_files": [
-        "src/visualizer.ts",
-        "src/audio-analysis.ts"
+        "src/main.ts",
+        "src/legal.ts"
       ],
       "confidence": "EXTRACTED",
-      "relation": "references",
-      "why": "bridges separate communities"
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "renderCurrentRoute()",
+      "target": "notFoundPage()",
+      "source_files": [
+        "src/main.ts",
+        "src/legal.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
     }
   ],
   "tokens": {
