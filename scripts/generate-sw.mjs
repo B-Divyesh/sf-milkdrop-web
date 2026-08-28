@@ -57,7 +57,11 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
   if (request.mode === 'navigate') {
-    event.respondWith(fetch(request).catch(() => caches.match('/index.html')));
+    event.respondWith(fetch(request).catch(async () => {
+      const cached = await caches.match('/index.html');
+      if (!cached) return Response.error();
+      return new Response(await cached.arrayBuffer(), { status: 200, headers: cached.headers });
+    }));
     return;
   }
   event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));

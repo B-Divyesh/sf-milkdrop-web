@@ -105,7 +105,11 @@ export class Visualizer {
   setPreset(index: number): void { this.mode = index; }
   setIntensity(value: number): void { this.intensity = value; }
   setPalette(name: string): void { this.palette = PALETTES[name] ?? PALETTES.lichen; }
-  setHighResolution(enabled: boolean): void { this.highResolution = enabled; this.resize(); }
+  setHighResolution(enabled: boolean): void {
+    this.highResolution = enabled;
+    this.canvas.dataset.resolutionCap = enabled ? '3840x2160' : '1920x2160';
+    this.resize();
+  }
   destroy(): void { cancelAnimationFrame(this.animation); }
 
   private loop = (): void => {

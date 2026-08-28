@@ -1,0 +1,72 @@
+[
+  {
+    "id": "demo-sample",
+    "claim": "The one-click demo uses a bundled 120 BPM sample that drives the visuals and changes them every 16 beats.",
+    "where": "landing sample preview, demo status, README",
+    "test": "npm run test:claims -- --grep @claim:demo-sample",
+    "sandbox": "fresh browser context at /?demo=1; assert automatic start, changing beat frames, tempo, and visual selection"
+  },
+  {
+    "id": "demo-isolation",
+    "claim": "Demo activity is not saved and cannot read or overwrite real preferences or license data.",
+    "where": "demo banner, privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:demo-isolation",
+    "sandbox": "seed real storage sentinels, run/reset/leave /?demo=1, and assert unchanged storage plus same-origin-only requests"
+  },
+  {
+    "id": "microphone-privacy",
+    "claim": "The visualizer uses the room microphone without audio routing; audio is analyzed in browser memory and is not recorded or uploaded.",
+    "where": "landing facts and boundaries, privacy page, README",
+    "test": "npm run test:claims -- --grep @claim:microphone-privacy",
+    "sandbox": "stub microphone and Web Audio, intercept all requests, instrument recording and speech APIs, and inspect browser storage"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "The demo and visualizer remain usable offline after the first visit.",
+    "where": "offline banner, README",
+    "test": "npm run test:claims -- --grep @claim:offline-reload",
+    "sandbox": "fresh browser context at /?demo=1; install service worker, go offline, reload, and change the visual"
+  },
+  {
+    "id": "visual-count",
+    "claim": "Eight visuals are free and Venue Pack adds four, for twelve total.",
+    "where": "landing facts, Venue Pack section and dialog, README",
+    "test": "npm run test:claims -- --grep @claim:visual-count",
+    "sandbox": "fresh /?demo=1; count free and paid visual controls, select the eighth, and verify the ninth opens the paid details"
+  },
+  {
+    "id": "venue-pack",
+    "claim": "The one-time $19 USD Venue Pack adds four visuals, a session-only logo overlay, and a 3840 by 2160 canvas control.",
+    "where": "Venue Pack section, dialog, terms, README",
+    "test": "npm run test:claims -- --grep @claim:venue-pack",
+    "sandbox": "enter through /?demo=1, switch to real mode with a cached sandbox verdict, upload a logo, enable 4K, and verify checkout copy"
+  },
+  {
+    "id": "controls-access",
+    "claim": "Visual choice, color, motion, full-screen chrome, settings, and stop controls work with labelled touch controls and documented keys.",
+    "where": "visualizer controls, README",
+    "test": "npm run test:claims -- --grep @claim:controls-access",
+    "sandbox": "fresh mobile /?demo=1; exercise touch and keyboard paths and assert the resulting visible states and focus"
+  },
+  {
+    "id": "phone-pairing",
+    "claim": "A paired phone controls the display; pairing failure leaves the local visualizer running and explains the network requirement.",
+    "where": "phone dialog, README",
+    "test": "npm run test:claims -- --grep @claim:phone-pairing",
+    "sandbox": "fresh /?demo=1; pair a second page and change its visual, then block the network and assert a clear error with the visualizer still running"
+  },
+  {
+    "id": "art-provenance",
+    "claim": "The product publishes the generator, date, source location, and shipped asset location for its launch artwork.",
+    "where": "About the art page, README",
+    "test": "npm run test:claims -- --grep @claim:art-provenance",
+    "sandbox": "enter through /?demo=1, leave the demo, navigate to /about, and assert all provenance fields"
+  },
+  {
+    "id": "static-build",
+    "claim": "The production command emits a static dist root with the app shell, service worker, and Azure security configuration under 200 KB of initial JavaScript.",
+    "where": "README",
+    "test": "npm run test:claims -- --grep @claim:static-build",
+    "sandbox": "run the production web server, enter /?demo=1, and inspect the generated dist contract and initial JavaScript bytes"
+  }
+]

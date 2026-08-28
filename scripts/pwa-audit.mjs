@@ -11,7 +11,7 @@ const second = join(root, 'second');
 await cp('dist', first, { recursive: true });
 await cp('dist', second, { recursive: true });
 const secondIndex = join(second, 'index.html');
-await writeFile(secondIndex, (await readFile(secondIndex, 'utf8')).replace('Milkdrop Web — sound grows here', 'Milkdrop Web — updated field guide'));
+await writeFile(secondIndex, (await readFile(secondIndex, 'utf8')).replace('Built by Param Factory · v1.1.0', 'Built by Param Factory · v1.1.1'));
 const regeneration = spawnSync(process.execPath, ['scripts/generate-sw.mjs', second], { encoding: 'utf8' });
 if (regeneration.status !== 0) throw new Error(regeneration.stderr || 'Could not generate the update worker');
 
@@ -69,7 +69,7 @@ try {
   await page.waitForFunction(async () => Boolean((await navigator.serviceWorker.getRegistration())?.waiting), undefined, { timeout: 10_000 });
   await page.locator('#update-banner:not([hidden])').waitFor();
   await page.locator('#update-button').click();
-  await page.waitForFunction(() => document.title === 'Milkdrop Web — updated field guide', undefined, { timeout: 10_000 });
+  await page.waitForFunction(() => document.body.textContent?.includes('Built by Param Factory · v1.1.1'), undefined, { timeout: 10_000 });
   if (failures.length) throw new Error(`Browser errors: ${failures.join('; ')}`);
   console.log(JSON.stringify({ offlineReload: 'passed', cachedAssetMimeTypes: cachedTypes, appOnlyUpdate: 'passed' }, null, 2));
 } finally {

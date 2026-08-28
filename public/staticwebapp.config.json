@@ -1,5 +1,4 @@
 {
-  "navigationFallback": { "rewrite": "/index.html", "exclude": ["/assets/*", "/*.svg", "/*.js", "/*.css", "/*.webmanifest", "/*.avif", "/*.webp", "/*.json", "/*.txt", "/sw.js"] },
   "globalHeaders": {
     "Content-Security-Policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://api.sociobot.in https://0.peerjs.com wss://0.peerjs.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "X-Content-Type-Options": "nosniff",
@@ -9,8 +8,21 @@
   },
   "routes": [
     { "route": "/assets/*", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
+    { "route": "/404.css", "headers": { "Cache-Control": "public, max-age=3600" } },
+    { "route": "/404.html", "headers": { "Cache-Control": "no-cache" } },
+    { "route": "/fern.svg", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
+    { "route": "/apple-touch-icon.png", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
+    { "route": "/robots.txt", "headers": { "Cache-Control": "public, max-age=3600" } },
+    { "route": "/sitemap.xml", "headers": { "Cache-Control": "public, max-age=3600" } },
     { "route": "/sw.js", "headers": { "Cache-Control": "no-cache, no-store, must-revalidate" } },
-    { "route": "/manifest.webmanifest", "headers": { "Cache-Control": "no-cache" } }
+    { "route": "/manifest.webmanifest", "headers": { "Cache-Control": "no-cache" } },
+    { "route": "/", "rewrite": "/index.html" },
+    { "route": "/index.html", "rewrite": "/index.html" },
+    { "route": "/demo", "rewrite": "/index.html" },
+    { "route": "/privacy", "rewrite": "/index.html" },
+    { "route": "/terms", "rewrite": "/index.html" },
+    { "route": "/about", "rewrite": "/index.html" },
+    { "route": "/*", "rewrite": "/404.html", "statusCode": 404 }
   ],
   "mimeTypes": { ".webmanifest": "application/manifest+json" }
 }

@@ -1,10 +1,13 @@
 {
   "name": "Milkdrop Web",
   "short_name": "Milkdrop",
-  "description": "Mic-driven, beat-aware visuals for the room.",
+  "description": "Turn room music into full-screen botanical visuals.",
   "start_url": "/?v=__BUILD_VERSION__",
   "display": "standalone",
   "background_color": "#07120f",
   "theme_color": "#07120f",
-  "icons": [{"src":"/fern.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "icons": [
+    {"src":"/fern.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"},
+    {"src":"/apple-touch-icon.png","sizes":"180x180","type":"image/png","purpose":"any"}
+  ]
 }

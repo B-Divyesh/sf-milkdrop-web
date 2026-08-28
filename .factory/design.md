@@ -33,10 +33,11 @@ All body pairings meet WCAG AA. Pollen is used as a fill or large marker, not sm
 
 ## Interaction grammar
 
-- The primary action is a large lozenge labelled “Listen to the room”. Its mic icon, privacy note, and current capability status are adjacent.
-- Controls appear as a bottom specimen drawer while visuals run. It can be hidden with `H`; any pointer movement or focus restores it.
-- Presets are a horizontally scrollable strip of numbered specimens. Left/right arrows change specimens, space stops listening, `F` enters fullscreen, `C` opens controls, and `H` hides chrome.
-- Beat feedback is a breathing ring and plain-language “Beat found” / “Listening for a pulse” status. It never depends on colour alone.
+- The primary action is a large lozenge labelled “Listen to the room”. A bordered “Try it with sample data” action sits beside it.
+- Demo mode opens the full visualizer immediately. A warm-paper banner remains above the stage and provides Reset and Start for real actions.
+- Controls appear as a bottom visual drawer. It can be hidden with `H` and restored with the labelled Show controls action.
+- Visuals are a horizontally scrollable numbered strip. Left/right arrows change visuals, space stops, `F` enters full screen, and `C` opens settings.
+- Beat feedback uses a breathing ring and the labels “Beat found” or “Listening for the beat”. It never depends on color alone.
 - The remote is local-network peer pairing built with WebRTC. A QR is convenient, but the readable room link and copy action are always present. No audio or visualizer data is relayed through a server.
 
 ## Motion policy
@@ -57,6 +58,7 @@ Generated asset prompt: “A wide top-down editorial botanical field-guide plate
 - Date: 2026-08-27.
 - Rights/provenance: original generated imagery for Milkdrop Web; no third-party or copyrighted character references.
 - Source PNG and prompt sidecar live in `assets/src/`; optimized WebP/AVIF outputs live in `public/assets/`.
+- `public/assets/social-preview.jpg` is a 1200 × 630 crop of that original artwork. `public/apple-touch-icon.png` is a square crop of the same source.
 
 ## Why this fits
 

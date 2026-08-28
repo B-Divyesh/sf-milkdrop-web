@@ -1,57 +1,76 @@
 # Milkdrop Web
 
-Mic-driven, beat-aware visuals for parties, jam rooms, bars, TVs, and projectors. Open the site, let the browser listen to the room, and run a full-screen visual instrument without routing Spotify, a mixer, or an audio file into it.
+Turn room music into full-screen botanical visuals for TVs and projectors.
 
-Live: [milkdrop-web.sociobot.in](https://milkdrop-web.sociobot.in)
+Milkdrop Web is for party hosts, musicians, rehearsal rooms, and venues. Open the site and allow its microphone. No audio routing is needed.
 
-## What ships
+[Try it with sample data](https://milkdrop-web.sociobot.in/?demo=1). The demo starts a bundled 120 BPM signal without asking for microphone access.
 
-- Twelve original WebGL botanical specimens: eight free and four in the Venue Pack
-- Local FFT, adaptive onset detection, tempo estimate, downbeat emphasis, and 16-beat phrase rotation
-- Phone remote over an encrypted WebRTC data channel, paired by QR or room link
-- Four palettes, motion and microphone tuning, keyboard operation, and full-screen mode
-- Optional one-time $19 Venue Pack with rare specimens, a local-only logo overlay, and 4K tuning
-- Installable/offline-capable app shell with no tracking or third-party runtime assets
+## Included features
 
-Microphone audio is analysed only in browser memory. It is never recorded or uploaded. The optional remote uses PeerJS’s public signalling service for connection setup; only control messages are sent.
+- Eight free WebGL visuals and four Venue Pack visuals
+- Visual choice, four color palettes, motion tuning, and microphone sensitivity
+- Labelled touch controls and keyboard controls
+- Full-screen mode and optional phone pairing
+- An offline app shell that keeps the demo and visualizer available after the first visit
+- A one-time $19 USD Venue Pack with four visuals, a session-only logo overlay, and a 3840 × 2160 canvas control
+
+Microphone audio is analyzed in browser memory. It is not recorded, transcribed, stored, or uploaded. The app includes no trackers.
+
+Phone pairing displays a room code. A failed connection leaves the local visualizer running and explains that pairing needs internet access.
+
+## Demo sandbox
+
+Open `/?demo=1` or `/demo`. Sample settings stay in memory. The demo does not read or change real preferences or license data.
+
+Use **Reset demo** for a fresh sample. Use **Start for real** to discard the sample and return home.
+
+See [`.factory/demo.md`](.factory/demo.md) for the verification contract.
 
 ## Run locally
 
-Requires Node.js 20 or later.
+Use a current LTS release of Node.js.
 
-```sh
+```bash
 npm ci
 npm run dev
 ```
 
-Microphone access requires `localhost` or HTTPS. To use the phone remote, both browsers need internet access for signalling and a network that permits WebRTC.
+Microphone access requires a secure browser context. Both `localhost` and the production HTTPS site provide one.
 
 ## Test and build
 
-```sh
+```bash
 npm test
+npm run test:claims
+npm run test:browser
 npm run build
-npm run preview
+npm run audit
+npm run audit:pwa
 ```
 
-The exact production build command is `npm run build`. It writes a static site to `dist/`, with `dist/index.html` at the deploy root. Azure Static Web Apps routing and security headers are in `public/staticwebapp.config.json`.
+Every public product promise is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names one tagged browser test.
+
+The production command emits a static `dist/` root. It includes `index.html`, the service worker, and Azure routing with security headers. Initial JavaScript stays below 200 KB.
+
+Deploy the contents of `dist/` as an Azure Static Web App. The repository does not manage DNS, billing, or infrastructure.
 
 ## Controls
 
-- Left/right arrows: previous/next specimen
-- `F`: enter or leave full screen
-- `H`: hide or show chrome
-- `C`: open tuning controls
-- `R`: open phone pairing
-- Space: stop listening and return to setup
+- Left and right arrows: choose the previous or next visual.
+- `F`: enter or leave full screen.
+- `H`: hide or show controls.
+- `C`: open visual settings.
+- `R`: open phone pairing.
+- Space: stop the visualizer and return to setup.
 
-On touch screens, all functions are available through labelled controls. If microphone access fails, the launch sheet explains how to retry and offers a no-mic preview.
+## Privacy and purchases
 
-## Architecture
+Read the in-product [privacy policy](https://milkdrop-web.sociobot.in/privacy) and [terms](https://milkdrop-web.sociobot.in/terms). Checkout uses only the Sociobot billing API.
 
-Vite and strict vanilla TypeScript keep the initial bundle small. Web Audio provides raw frequency data with AGC, echo cancellation, and noise suppression explicitly disabled. The renderer is a compact original WebGL fragment shader; dependencies for QR generation and WebRTC load only when remote pairing opens. Preferences and license state are local-first.
+## Project records
 
-The researched scope is in `.factory/brief.json`, visual decisions and generated-asset provenance are in `.factory/design.md`, and release verification is in `.factory/handoff.md`.
+See [`.factory/brief.json`](.factory/brief.json) for scope. See [`.factory/design.md`](.factory/design.md) for visual decisions and asset provenance. See [`.factory/handoff.md`](.factory/handoff.md) for release evidence.
 
 ## License
 

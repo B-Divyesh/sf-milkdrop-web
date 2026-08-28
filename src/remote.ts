@@ -53,4 +53,11 @@ export class PhoneRemote extends EventTarget {
   send(command: RemoteCommand): void {
     if (this.connection?.open) this.connection.send(command);
   }
+
+  stop(): void {
+    this.connection?.close();
+    this.peer?.destroy();
+    this.connection = null;
+    this.peer = null;
+  }
 }
