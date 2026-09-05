@@ -1,5 +1,13 @@
 # Milkdrop Web — repair 2 handoff
 
+## Verification 3
+
+Independent QA passed on 2026-09-05 UTC with **zero findings and zero untested claims**. It reviewed implementation `ada4cc4194323a43278a3b766455637319afe05b`, documentation `e8ade7a9fe0a1e39a520c2474da4cf0f441790e1`, and the deployed site at <https://milkdrop-web.sociobot.in>.
+
+The verifier used a detached clean checkout, ran `npm ci`, `npm test`, `npm run build`, all eleven declared claim commands separately, the 11 browser structure/accessibility tests, `npm run audit`, and `npm run audit:pwa`. The live page matched the clean built `index.html` SHA-256 exactly. Fresh phone and desktop first reads, demo isolation/reset, offline reload, keyboard/recovery behavior, legal routes, 404, headers, links, checkout redirect, and invalid-license behavior passed.
+
+See `.factory/verification-3.md` for the full evidence and prior-finding disposition. Physical microphone acoustics and a paid purchase remain environment-limited checks; neither is an untested public claim. The pre-existing `graphify-out` changes remain untouched.
+
 ## Outcome
 
 All five findings in `.factory/review-2.md`, including the minor copy finding, are resolved. Earlier review findings remain fixed. The deployed product is the Vite and vanilla TypeScript static app at <https://milkdrop-web.sociobot.in>.
