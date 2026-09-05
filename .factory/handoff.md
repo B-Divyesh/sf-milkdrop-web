@@ -1,100 +1,66 @@
-# Milkdrop Web — review 3 handoff
-
-## Review 3
-
-Strict review on 5 September 2026 produced a **FAIL** with two findings and zero untested public claims. The reviewed implementation is `ada4cc4194323a43278a3b766455637319afe05b`; the documentation baseline before this report is `b535fefa6a415208f1b506e1e544aa495e42ea13`. The live `index.html` remains byte-identical to the clean candidate build.
-
-- **F-3-1, high:** invalid persisted visual or preference values throw during real-mode setup before the main controls are wired. Validate and default every stored value, then cover direct home load and demo exit with wrong-type, null, negative, and out-of-range state.
-- **F-3-2, medium:** at 390 px while offline in the demo, the 88 px offline notice and demo notice overlap by 48 px. Stack the notices without fixed one-line assumptions and add 320 px and 390 px overlap checks.
-
-All eleven declared claim commands passed separately from a clean detached checkout. `npm test`, `npm run build`, the 22-test browser suite, the local axe audit, the PWA offline/update audit, the live route/link/header checks, and live Lighthouse also passed. Live Lighthouse scored 100 in Performance, Accessibility, Best Practices, and SEO, with LCP 1.2 s, CLS 0, and TBT 0 ms.
-
-Fresh live phone and desktop first screens clearly showed the job, audience, real microphone action, sample action, next step, and three facts before scrolling. The populated sample, valid-state isolation, Reset, Start for real, microphone denial recovery, keyboard/focus paths, reduced motion, live phone pairing, invalid license, legal pages, and designed HTTP 404 passed. The mobile offline visualizer remained functional; only its overlapping notices fail review.
-
-No product code was changed. See `.factory/review-3.md` for reproduction details and complete evidence. Review evidence is also copied to `/work/.evidence/qa-report.md`, with the machine verdict in `/work/.evidence/qa-result.json`. The pre-existing modified `graphify-out` files remain untouched and unstaged.
-
-## Verification 3
-
-Independent QA passed on 2026-09-05 UTC with **zero findings and zero untested claims**. It reviewed implementation `ada4cc4194323a43278a3b766455637319afe05b`, documentation `e8ade7a9fe0a1e39a520c2474da4cf0f441790e1`, and the deployed site at <https://milkdrop-web.sociobot.in>.
-
-The verifier used a detached clean checkout, ran `npm ci`, `npm test`, `npm run build`, all eleven declared claim commands separately, the 11 browser structure/accessibility tests, `npm run audit`, and `npm run audit:pwa`. The live page matched the clean built `index.html` SHA-256 exactly. Fresh phone and desktop first reads, demo isolation/reset, offline reload, keyboard/recovery behavior, legal routes, 404, headers, links, checkout redirect, and invalid-license behavior passed.
-
-See `.factory/verification-3.md` for the full evidence and prior-finding disposition. Physical microphone acoustics and a paid purchase remain environment-limited checks; neither is an untested public claim. The pre-existing `graphify-out` changes remain untouched.
+# Milkdrop Web — repair 3 handoff
 
 ## Outcome
 
-All five findings in `.factory/review-2.md`, including the minor copy finding, are resolved. Earlier review findings remain fixed. The deployed product is the Vite and vanilla TypeScript static app at <https://milkdrop-web.sociobot.in>.
+Implementation `4385e735d3e385bfaf922e2d2f799c531eb1c082` repairs both strict-review findings and is deployed at <https://milkdrop-web.sociobot.in>.
 
-Implementation and deployment SHA: `ada4cc4194323a43278a3b766455637319afe05b`.
+Milkdrop Web turns room music into full-screen visuals for party hosts, musicians, and venues using a TV or projector. The first action is **Listen to the room** for real microphone use, or **Try it with sample data** for the one-click sandbox.
 
-The later documentation commit contains this handoff only. Its SHA is recorded in the final work-order response because a commit cannot contain its own hash.
+- Invalid `milkdrop:preset` values now fall back to Fern echo. Malformed JSON, `null`, arrays, wrong types, invalid palettes, invalid booleans, and values outside the 20–100 control range now use safe defaults.
+- Offline and demo notices now share a measured fixed stack. The header and stage controls use its measured height, so wrapped phone notices do not cover one another or the controls.
+- Added outcome-based browser regression coverage for malformed, null, negative, wrong-type, and out-of-range saved state on direct home load and after **Start for real**. It starts the real visualizer with a microphone stub and asserts no page errors.
+- Added 320 px and 390 px offline-demo checks that measure the visible offline notice, demo banner, header, and stage controls and require non-overlap.
 
-## Review 2 finding disposition
+## Verification
 
-- **F-2-1:** The server-returned 404 now includes Open Graph, Twitter, touch-icon, canonical, title, description, and favicon metadata. It uses the standard navigation and footer and keeps the real HTTP 404 status.
-- **F-2-2:** Each history entry records scroll coordinates and focused control. Back and Forward restore both values while announcing the destination heading.
-- **F-2-3:** The demo keeps a compact branded header and footer. Its stage controls have clear reserved space on phones. The static 404 uses the same shell. The next-step line and all three facts end at 727 px in the 1440 × 900 first screen.
-- **F-2-4:** “Audio routing,” “WebGL visuals,” “app shell,” and “dist root” were removed from first-use and README copy. The 404 heading is now literal. `.factory/copy-audit.md` records the replacements.
-- **F-2-5:** `license-verification-cadence` is a declared claim. Its browser test controls the clock and proves one request inside 24 hours and a second request at the boundary.
+Detached clean checkout: `/tmp/milkdrop-web-repair-3-proof` at the implementation SHA.
 
-## Clean-checkout verification
-
-Detached proof checkout: `/tmp/milkdrop-repair2-proof` at the implementation SHA.
-
-- `npm ci`: passed; 97 packages installed and 0 vulnerabilities.
-- `npm test`: passed, 3/3 unit tests.
-- `npm run build`: passed and emitted `dist/index.html`, `dist/sw.js`, and `dist/staticwebapp.config.json`.
-- Every command in `.factory/claims.json` was run separately: 11/11 passed.
-- `npm run test:browser`: passed, 22/22 browser tests.
-- `npm run audit:pwa`: passed offline reload, cached JavaScript/CSS MIME checks, and the explicit update flow.
-- `npm run audit`: passed mobile/desktop home and all routes with no axe violations, console errors, overflow, or heading failures.
-- Axe CLI 4.13.0: zero violations on home, demo, privacy, terms, and about.
-- Lighthouse mobile locally: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.5 s, CLS 0, TBT 0 ms.
+- `npm ci`: passed; 97 packages installed, 0 vulnerabilities.
+- `npm test`: passed, 3/3.
+- `npm run build`: passed; emitted `dist/`, `sw.js`, and Azure configuration. Initial application JavaScript is 39.18 KB raw / 14.36 KB gzip. CSS is 21.10 KB raw / 5.47 KB gzip.
+- All eleven commands in `.factory/claims.json` passed separately: `demo-sample`, `demo-isolation`, `microphone-privacy`, `offline-reload`, `visual-count`, `venue-pack`, `license-verification-cadence`, `controls-access`, `phone-pairing`, `art-provenance`, and `static-build`.
+- `npm run test:browser`: passed, 25/25. This includes the new saved-settings recovery and 320 px/390 px notice-layout cases.
+- `npm run audit:pwa`: passed offline reload, cached JavaScript/CSS MIME checks, and app-only update handling.
+- `npm run audit` against a built preview: passed on mobile and desktop home plus demo, privacy, terms, about, and designed 404. Axe found no violations, there was no overflow, and the browser logged no errors.
 - `git diff --check`: passed.
 
-Build budgets:
+## Deployment and live checks
 
-- Initial JavaScript: 38.14 KB raw / 13.98 KB gzip.
-- CSS: 21.42 KB raw / 5.50 KB gzip.
-- Mobile hero AVIF: 27.90 KB.
-- Lighthouse initial transfer: 95 KiB.
+The durable static deployment command was run for the existing product app:
 
-## Deployment and live verification
-
-Deployment command:
-
-```bash
+```sh
 /opt/fleet/lib/deploy-static.sh milkdrop-web /work/repo/dist
 ```
 
-Azure deployment ID: `2b5b595f-ca33-4de9-8a9a-cb7da43044e4`.
+The live and local `index.html` SHA-256 values both equal `23c855d04a53e40d5e2cf118d2c84392fca1f0cc813251a684a904a1b585c821`.
 
-- The live and local `index.html` SHA-256 values both equal `e3d67dc6189d8fc71e4170e3564eabc74d0e36ff0518084b716e2f4061080c28`.
-- `/opt/fleet/lib/verify-url.sh` passed with HTTP 200, the correct title/language, one h1, one main, complete alt text, labelled buttons, and no console errors.
-- Fresh 390 × 844 and 1440 × 900 contexts showed the job, audience, primary microphone action, sample action, next step, and three facts before scrolling.
-- The live demo started at Fern echo with a 120 BPM sample, changed to Pollen orbit, reset to Fern echo and lichen, and retained seeded real preferences and license data byte-for-byte.
-- The live demo exposed one header and one footer without covering its controls. Start for real removed the demo banner.
-- Live Back restored scrollY 2143 and footer Privacy focus. Forward restored scrollY 320 and the Privacy heading focus.
-- A fresh live service worker reload kept the demo usable offline and allowed the visual to change.
-- A live phone page paired with the display and changed its visual to Pollen orbit.
-- The unknown route returned HTTP 404 with the full 404 metadata and standard shell.
-- Live browser audit and axe CLI found zero violations and zero console errors on all reviewed routes.
-- Live Lighthouse mobile: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.2 s, CLS 0, TBT 30 ms.
-- Live responses include CSP with `frame-ancestors`, HSTS, frame denial, MIME protection, referrer policy, and microphone-only permissions policy. Hashed assets use one-year immutable caching; `sw.js` uses no-store.
-- The production checkout returned the expected hosted-checkout redirect. An invalid license returned the expected inactive result. No purchase was started.
+- `verify-url.sh` passed with HTTP 200, title, `lang=en`, one h1, a main landmark, complete image alt text, labelled buttons, and no load errors.
+- Fresh 390 × 844 and 1440 × 900 reduced-motion contexts showed the job, audience, microphone and sample actions, next step, and all three facts before scrolling. On the phone the last fact ends at 673 px; on desktop it ends at 727 px.
+- A fresh live sample began at Fern echo, changed to Pollen orbit, then Reset returned to Fern echo. Its persistent sample label remained visible. Seeded real preset, preference, and license values remained byte-for-byte unchanged.
+- A live service-worker-controlled offline demo remained usable and changed visual. At 390 px the offline notice occupied 0–88 px, demo banner 88–152 px, header 152–212 px, and stage controls began at 216 px. There were no console errors.
+- The live browser audit passed on home, demo, privacy, terms, about, and the deliberate HTTP 404. The 404 remains expected and designed, not a product defect.
+- Live mobile Lighthouse: Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 1.28 s, CLS 0, TBT 0 ms.
+
+## Finding disposition
+
+- F-3-1: fixed. Corrupt persisted values no longer prevent listeners or the real visualizer from starting.
+- F-3-2: fixed. Phone notices stack at their measured heights instead of using a fixed one-line offset.
+- Review 1 B1–B4, H1–H3, M1–M4, L1, and U01–U45 remain fixed by the existing clear first screen, isolated demo, claims registry, route metadata/history behavior, plain copy, labels, and designed 404.
+- Review 2 F-2-1 through F-2-5 remain fixed: static 404 metadata, Back/Forward focus and scroll, standard shell/first-screen fit, plain terminology, and daily license verification coverage all passed current browser checks.
+- Verification 1’s checkout, PWA update/offline, caching, and security-header findings remain fixed. The free core continues to work without any billing purchase.
 
 ## Evidence
 
-- Local axe JSON: `/tmp/milkdrop-axe-local.json`
-- Live axe JSON: `/tmp/milkdrop-axe-live-repair2.json`
-- Local Lighthouse JSON: `/tmp/milkdrop-lighthouse-local.json`
-- Live Lighthouse JSON: `/tmp/milkdrop-lighthouse-live-repair2.json`
-- Live URL verification: `/tmp/milkdrop-repair2-live/`
-- Reviewed screenshots: `/tmp/milkdrop-repair-home-mobile.png`, `/tmp/milkdrop-repair-home-desktop.png`, `/tmp/milkdrop-repair-demo-mobile.png`, `/tmp/milkdrop-repair-demo-desktop.png`, and `/tmp/milkdrop-repair-404-mobile.png`
+- Live URL check: `/tmp/milkdrop-web-repair-3-live/`
+- Live screenshots: `/tmp/milkdrop-web-repair-3-live-phone.png`, `/tmp/milkdrop-web-repair-3-live-desktop.png`, `/tmp/milkdrop-web-repair-3-live-demo-phone.png`, and `/tmp/milkdrop-web-repair-3-live-offline-phone.png`
+- Live Lighthouse JSON: `/tmp/milkdrop-web-repair-3-lighthouse-live.json`
+- Catalog description copy: `/work/.evidence/catalog-description.txt`
 
 ## Known limits
 
-- This container has no physical microphone. The automated microphone path uses deterministic MediaStream and Web Audio stubs; a real-device acoustic check remains prudent before a venue event.
-- Phone pairing depends on the disclosed public PeerJS connection service and on WebRTC being allowed by the network. Pairing failure leaves the local visualizer running.
-- No paid purchase was made. Checkout availability, cached entitlement behavior, invalid-license recovery, and paid controls were verified without spending money.
-- Pre-existing modified `graphify-out` files were not staged, committed, or used for the deployment.
+- This container has no physical microphone. Deterministic MediaStream and Web Audio stubs cover constraints, local processing, recovery, and track stop behavior. A venue should still do an acoustic room check before an event.
+- Phone pairing depends on the disclosed PeerJS connection service and a network that permits WebRTC. Pairing failure leaves the local visualizer running.
+- No paid purchase was made. Checkout reachability, returned-license handling, cached entitlement behavior, inactive-license recovery, and paid controls were verified without a charge.
+- The pre-existing modified `graphify-out` files were not staged, committed, deployed, or changed.
+
+The implementation SHA above differs from the later documentation commit that records this handoff; that documentation SHA is reported with the final work-order result.
