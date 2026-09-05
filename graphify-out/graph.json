@@ -1105,40 +1105,20 @@
       "source_location": "L1"
     },
     {
-      "id": "peerjs_peerjs",
-      "label": "peerjs",
-      "_origin": "ast",
-      "community": 12,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "peerjs",
-      "source_file": "peerjs"
-    },
-    {
       "id": "playwright_config",
       "label": "playwright.config.ts",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "file_type": "code",
       "norm_label": "playwright.config.ts",
       "source_file": "playwright.config.ts",
       "source_location": "L1"
     },
     {
-      "id": "qrcode_qrcode",
-      "label": "qrcode",
-      "_origin": "ast",
-      "community": 14,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "qrcode",
-      "source_file": "qrcode"
-    },
-    {
       "id": "tests_product_spec",
       "label": "product.spec.ts",
       "_origin": "ast",
-      "community": 15,
+      "community": 13,
       "file_type": "code",
       "norm_label": "product.spec.ts",
       "source_file": "tests/product.spec.ts",
@@ -1148,7 +1128,7 @@
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
-      "community": 16,
+      "community": 14,
       "file_type": "code",
       "norm_label": "vite.config.ts",
       "source_file": "vite.config.ts",
@@ -4148,5 +4128,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "83024c6058860ff675e18e97eb46a72f9339c8b9"
+  "built_at_commit": "16ab0a29331285a4e9435b82b40ebc23d4671ea6"
 }

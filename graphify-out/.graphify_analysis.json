@@ -182,18 +182,12 @@
       "tests_helpers_installmicrophonestub"
     ],
     "12": [
-      "peerjs_peerjs"
-    ],
-    "13": [
       "playwright_config"
     ],
-    "14": [
-      "qrcode_qrcode"
-    ],
-    "15": [
+    "13": [
       "tests_product_spec"
     ],
-    "16": [
+    "14": [
       "vite_config"
     ]
   },
@@ -212,9 +206,7 @@
     "11": 1.0,
     "12": 1.0,
     "13": 1.0,
-    "14": 1.0,
-    "15": 1.0,
-    "16": 1.0
+    "14": 1.0
   },
   "gods": [
     {
@@ -228,13 +220,13 @@
       "degree": 12
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
+      "id": "package_scripts",
+      "label": "scripts",
       "degree": 10
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "degree": 10
     },
     {
@@ -248,13 +240,13 @@
       "degree": 8
     },
     {
-      "id": "src_audio_roomaudio",
-      "label": "RoomAudio",
+      "id": "src_audio_analysis_beattracker",
+      "label": "BeatTracker",
       "degree": 6
     },
     {
-      "id": "src_audio_analysis_beattracker",
-      "label": "BeatTracker",
+      "id": "src_audio_roomaudio",
+      "label": "RoomAudio",
       "degree": 6
     },
     {
@@ -263,8 +255,8 @@
       "degree": 6
     },
     {
-      "id": "src_main_setupvisualizer_selectpreset",
-      "label": "selectPreset()",
+      "id": "src_main_setupvisualizer_handleremote",
+      "label": "handleRemote()",
       "degree": 6
     }
   ],
