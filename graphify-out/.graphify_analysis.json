@@ -1,6 +1,7 @@
 {
   "communities": {
     "0": [
+      "qrcode",
       "src_legal",
       "src_legal_about",
       "src_legal_escapehtml",
@@ -11,15 +12,19 @@
       "src_legal_terms",
       "src_main",
       "src_main_capturefocus",
-      "src_main_escapehtml",
+      "src_main_defaultpreferences",
       "src_main_findsavedfocus",
       "src_main_focusrouteheading",
       "src_main_focussnapshot",
       "src_main_initialstage",
+      "src_main_iscontrolvalue",
+      "src_main_ispalette",
       "src_main_main",
+      "src_main_noticestack",
+      "src_main_preferences",
+      "src_main_readpreferences",
       "src_main_registerserviceworker",
       "src_main_rendercurrentroute",
-      "src_main_renderphoneremote",
       "src_main_renderstaticpage",
       "src_main_restorehistoryentry",
       "src_main_routehistorystate",
@@ -27,18 +32,9 @@
       "src_main_schedulehistorysync",
       "src_main_setupvisualizer_stop",
       "src_main_synccurrenthistoryentry",
+      "src_main_syncnoticelayout",
       "src_main_updatemetadata",
-      "src_main_updatenetworkstate",
-      "src_remote",
-      "src_remote_createcode",
-      "src_remote_phoneremote",
-      "src_remote_phoneremote_connect",
-      "src_remote_phoneremote_send",
-      "src_remote_phoneremote_stop",
-      "src_remote_remotecommand",
-      "src_remote_screenremote",
-      "src_remote_screenremote_start",
-      "src_remote_screenremote_stop"
+      "src_main_updatenetworkstate"
     ],
     "1": [
       "package",
@@ -89,7 +85,7 @@
       "src_audio_roomaudio_startdemo",
       "src_audio_roomaudio_stop",
       "src_main_opendialog",
-      "src_main_readpreferences",
+      "src_main_readpreset",
       "src_main_setupvisualizer",
       "src_main_setupvisualizer_applytuning",
       "src_main_setupvisualizer_handleremote",
@@ -135,6 +131,20 @@
       "src_visualizer"
     ],
     "6": [
+      "src_main_escapehtml",
+      "src_main_renderphoneremote",
+      "src_remote",
+      "src_remote_createcode",
+      "src_remote_phoneremote",
+      "src_remote_phoneremote_connect",
+      "src_remote_phoneremote_send",
+      "src_remote_phoneremote_stop",
+      "src_remote_remotecommand",
+      "src_remote_screenremote",
+      "src_remote_screenremote_start",
+      "src_remote_screenremote_stop"
+    ],
+    "7": [
       "src_visualizer_visualizer",
       "src_visualizer_visualizer_constructor",
       "src_visualizer_visualizer_createprogram",
@@ -147,7 +157,7 @@
       "src_visualizer_visualizer_setpalette",
       "src_visualizer_visualizer_setpreset"
     ],
-    "7": [
+    "8": [
       "src_license",
       "src_license_cachedverdict",
       "src_license_licensemanager",
@@ -159,7 +169,7 @@
       "src_license_licensemanager_verify",
       "src_license_verifyresponse"
     ],
-    "8": [
+    "9": [
       "scripts_pwa_audit",
       "scripts_pwa_audit_address",
       "scripts_pwa_audit_failures",
@@ -170,58 +180,56 @@
       "scripts_pwa_audit_secondindex",
       "scripts_pwa_audit_server"
     ],
-    "9": [
+    "10": [
       "scripts_generate_sw",
       "scripts_generate_sw_filesin",
       "scripts_generate_sw_manifestpath",
       "scripts_generate_sw_precache",
       "scripts_generate_sw_version"
     ],
-    "10": [
+    "11": [
       "scripts_browser_audit",
       "scripts_browser_audit_errors",
       "scripts_browser_audit_results",
       "scripts_browser_audit_violations"
     ],
-    "11": [
+    "12": [
       "tests_claims_spec",
       "tests_helpers",
-      "tests_helpers_installmicrophonestub"
+      "tests_helpers_installmicrophonestub",
+      "tests_product_spec"
     ],
-    "12": [
+    "13": [
       "vite_config",
       "vite_config_approutes",
       "vite_config_configurepreviewserver"
     ],
-    "13": [
-      "playwright_config"
-    ],
     "14": [
-      "tests_product_spec"
+      "playwright_config"
     ]
   },
   "cohesion": {
-    "0": 0.08819345661450925,
+    "0": 0.09803921568627451,
     "1": 0.1,
     "2": 0.1111111111111111,
     "3": 0.24166666666666667,
     "4": 0.13333333333333333,
     "5": 0.19047619047619047,
-    "6": 0.2545454545454545,
-    "7": 0.3333333333333333,
-    "8": 0.2222222222222222,
-    "9": 0.4,
-    "10": 0.5,
-    "11": 1.0,
-    "12": 0.6666666666666666,
-    "13": 1.0,
+    "6": 0.18181818181818182,
+    "7": 0.2545454545454545,
+    "8": 0.3333333333333333,
+    "9": 0.2222222222222222,
+    "10": 0.4,
+    "11": 0.5,
+    "12": 0.8333333333333334,
+    "13": 0.6666666666666666,
     "14": 1.0
   },
   "gods": [
     {
       "id": "src_main_setupvisualizer",
       "label": "setupVisualizer()",
-      "degree": 15
+      "degree": 18
     },
     {
       "id": "src_visualizer_visualizer",
@@ -241,7 +249,7 @@
     {
       "id": "src_main_rendercurrentroute",
       "label": "renderCurrentRoute()",
-      "degree": 9
+      "degree": 10
     },
     {
       "id": "src_license_licensemanager",
@@ -259,13 +267,13 @@
       "degree": 6
     },
     {
-      "id": "src_main_renderphoneremote",
-      "label": "renderPhoneRemote()",
+      "id": "src_main_synccurrenthistoryentry",
+      "label": "syncCurrentHistoryEntry()",
       "degree": 6
     },
     {
-      "id": "src_main_synccurrenthistoryentry",
-      "label": "syncCurrentHistoryEntry()",
+      "id": "src_main_renderphoneremote",
+      "label": "renderPhoneRemote()",
       "degree": 6
     }
   ],
