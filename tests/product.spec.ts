@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { installMicrophoneStub } from './helpers';
 
 test('first screen explains the job, audience, actions, and facts at 390px', async ({ page }) => {
   await page.goto('/');
@@ -25,6 +26,69 @@ test('complete first-screen guidance fits a 1440 by 900 display', async ({ page 
     expect(bounds.bottom).toBeLessThanOrEqual(900);
   }
 });
+
+test('invalid saved settings fall back to a usable real visualizer on home and after leaving the demo', async ({ page }) => {
+  await installMicrophoneStub(page);
+  const pageErrors: string[] = [];
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+  await page.addInitScript(() => {
+    localStorage.setItem('milkdrop:preset', 'not-a-preset');
+    localStorage.setItem('milkdrop:preferences', 'null');
+  });
+
+  await page.goto('/');
+  await expect(page.locator('#preset-name')).toHaveText('Fern echo');
+  await expect(page.locator('#intensity')).toHaveValue('75');
+  await expect(page.locator('#sensitivity')).toHaveValue('50');
+  await expect(page.locator('#palette-select')).toHaveValue('lichen');
+  await page.locator('#start-button').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'microphone');
+  await page.keyboard.press('Space');
+
+  await page.evaluate(() => {
+    localStorage.setItem('milkdrop:preset', '-1');
+    localStorage.setItem('milkdrop:preferences', '{');
+  });
+  await page.reload();
+  await expect(page.locator('#preset-name')).toHaveText('Fern echo');
+  await page.locator('#start-button').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'microphone');
+  await page.keyboard.press('Space');
+
+  await page.evaluate(() => {
+    localStorage.setItem('milkdrop:preset', '12');
+    localStorage.setItem('milkdrop:preferences', JSON.stringify({ intensity: -1, sensitivity: 101, palette: 'invalid', autoRotate: 'yes', fourK: 1 }));
+  });
+  await page.goto('/?demo=1');
+  await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'demo');
+  await page.locator('#start-real').click();
+  await expect(page).toHaveURL('/');
+  await expect(page.locator('#preset-name')).toHaveText('Fern echo');
+  await expect(page.locator('#intensity')).toHaveValue('75');
+  await expect(page.locator('#sensitivity')).toHaveValue('50');
+  await expect(page.locator('#palette-select')).toHaveValue('lichen');
+  await page.locator('#start-button').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'microphone');
+  expect(pageErrors).toEqual([]);
+});
+
+for (const width of [320, 390]) {
+  test(`offline and demo notices keep phone controls clear at ${width}px`, async ({ page, context }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('/?demo=1');
+    await expect(page.locator('#stage')).toHaveAttribute('data-mode', 'demo');
+    await context.setOffline(true);
+    await expect(page.locator('#offline-banner')).toBeVisible();
+    await expect(page.locator('#demo-banner')).toBeVisible();
+    await expect.poll(async () => await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--notice-stack-height').trim())).not.toBe('0px');
+    const bounds = await page.locator('#offline-banner, #demo-banner, #site-header, #stage .stage-top').evaluateAll((elements) => elements.map((element) => {
+      const { top, bottom } = element.getBoundingClientRect();
+      return { id: element.id || element.className, top, bottom };
+    }));
+    expect(bounds).toHaveLength(4);
+    for (let index = 0; index < bounds.length - 1; index += 1) expect(bounds[index].bottom).toBeLessThanOrEqual(bounds[index + 1].top);
+  });
+}
 
 test('routes update metadata and Back and Forward restore focus and scroll', async ({ page }) => {
   await page.goto('/');

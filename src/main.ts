@@ -3,7 +3,7 @@ import { RoomAudio } from './audio';
 import type { AudioFrame } from './audio-analysis';
 import { getStaticPage, notFoundPage, type StaticPage } from './legal';
 import { LicenseManager } from './license';
-import { PRESETS } from './presets';
+import { PALETTES, PRESETS } from './presets';
 import { PhoneRemote, ScreenRemote, type RemoteCommand } from './remote';
 import { Visualizer } from './visualizer';
 
@@ -22,8 +22,10 @@ const homeMarkup = main.innerHTML;
 const initialStage = main.querySelector<HTMLElement>('#stage');
 if (!initialStage) throw new Error('Missing demo stage');
 const stageMarkup = initialStage.outerHTML;
+const noticeStack = $<HTMLElement>('#notice-stack');
 let teardownRoute: (() => void) | null = null;
 let historySyncFrame = 0;
+let noticeLayoutFrame = 0;
 
 interface FocusSnapshot {
   id?: string;
@@ -40,11 +42,22 @@ interface RouteHistoryState {
   };
 }
 
+const syncNoticeLayout = (): void => {
+  if (noticeLayoutFrame) return;
+  noticeLayoutFrame = requestAnimationFrame(() => {
+    noticeLayoutFrame = 0;
+    document.documentElement.style.setProperty('--notice-stack-height', `${Math.ceil(noticeStack.getBoundingClientRect().height)}px`);
+  });
+};
+
 const updateNetworkState = (): void => {
   $('#offline-banner').toggleAttribute('hidden', navigator.onLine);
+  syncNoticeLayout();
 };
 window.addEventListener('online', updateNetworkState);
 window.addEventListener('offline', updateNetworkState);
+window.addEventListener('resize', syncNoticeLayout);
+if ('ResizeObserver' in window) new ResizeObserver(syncNoticeLayout).observe(noticeStack);
 updateNetworkState();
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
@@ -171,6 +184,7 @@ function renderCurrentRoute(focus = false): void {
   document.querySelectorAll<HTMLDialogElement>('dialog[open]').forEach((dialog) => dialog.close());
   document.body.style.overflow = '';
   $('#demo-banner').setAttribute('hidden', '');
+  syncNoticeLayout();
   $('#site-header').removeAttribute('hidden');
   $('#site-footer').removeAttribute('hidden');
   document.body.classList.remove('demo-active');
@@ -284,7 +298,7 @@ function setupVisualizer(demoMode: boolean): () => void {
   const presetStrip = $('#preset-strip');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let visualizer: Visualizer | null = null;
-  let currentPreset = demoMode ? 0 : Number(localStorage.getItem('milkdrop:preset') || 0);
+  let currentPreset = demoMode ? 0 : readPreset();
   let remote: ScreenRemote | null = null;
   let remoteUrl = '';
   let statusTimeout = 0;
@@ -297,12 +311,12 @@ function setupVisualizer(demoMode: boolean): () => void {
   const palette = $<HTMLSelectElement>('#palette-select');
   const autoRotate = $<HTMLInputElement>('#auto-rotate');
   const fourK = $<HTMLInputElement>('#four-k');
-  const saved = demoMode ? {} : readPreferences();
-  intensity.value = String(reduceMotion ? Math.min(saved.intensity ?? 35, 35) : (saved.intensity ?? 75));
-  sensitivity.value = String(saved.sensitivity ?? 50);
-  palette.value = saved.palette ?? 'lichen';
-  autoRotate.checked = saved.autoRotate ?? !reduceMotion;
-  fourK.checked = saved.fourK ?? false;
+  const saved = demoMode ? defaultPreferences() : readPreferences();
+  intensity.value = String(reduceMotion ? Math.min(saved.intensity, 35) : saved.intensity);
+  sensitivity.value = String(saved.sensitivity);
+  palette.value = saved.palette;
+  autoRotate.checked = saved.autoRotate;
+  fourK.checked = saved.fourK;
   updateOutputs();
 
   presetStrip.replaceChildren();
@@ -338,7 +352,10 @@ function setupVisualizer(demoMode: boolean): () => void {
       stage.dataset.mode = sample ? 'demo' : 'microphone';
       stage.dataset.started = 'true';
       document.body.style.overflow = 'hidden';
-      if (sample) $('#demo-banner').removeAttribute('hidden');
+      if (sample) {
+        $('#demo-banner').removeAttribute('hidden');
+        syncNoticeLayout();
+      }
       showStatus(sample ? 'Sample signal started' : 'Microphone opened');
     } catch (error) {
       audio.stop();
@@ -583,9 +600,49 @@ function openDialog(dialog: HTMLDialogElement): void {
   if (!dialog.open) dialog.showModal();
 }
 
-function readPreferences(): Partial<{ intensity: number; sensitivity: number; palette: string; autoRotate: boolean; fourK: boolean }> {
-  try { return JSON.parse(localStorage.getItem('milkdrop:preferences') || '{}') as Partial<{ intensity: number; sensitivity: number; palette: string; autoRotate: boolean; fourK: boolean }>; }
-  catch { return {}; }
+interface Preferences {
+  intensity: number;
+  sensitivity: number;
+  palette: keyof typeof PALETTES;
+  autoRotate: boolean;
+  fourK: boolean;
+}
+
+function defaultPreferences(): Preferences {
+  return { intensity: 75, sensitivity: 50, palette: 'lichen', autoRotate: !matchMedia('(prefers-reduced-motion: reduce)').matches, fourK: false };
+}
+
+function readPreset(): number {
+  const stored = localStorage.getItem('milkdrop:preset');
+  if (!stored || !/^(0|[1-9]\d*)$/.test(stored)) return 0;
+  const preset = Number(stored);
+  return Number.isSafeInteger(preset) && preset < PRESETS.length ? preset : 0;
+}
+
+function readPreferences(): Preferences {
+  const defaults = defaultPreferences();
+  try {
+    const stored: unknown = JSON.parse(localStorage.getItem('milkdrop:preferences') || '{}');
+    if (!stored || typeof stored !== 'object' || Array.isArray(stored)) return defaults;
+    const value = stored as Record<string, unknown>;
+    return {
+      intensity: isControlValue(value.intensity) ? value.intensity : defaults.intensity,
+      sensitivity: isControlValue(value.sensitivity) ? value.sensitivity : defaults.sensitivity,
+      palette: isPalette(value.palette) ? value.palette : defaults.palette,
+      autoRotate: typeof value.autoRotate === 'boolean' ? value.autoRotate : defaults.autoRotate,
+      fourK: typeof value.fourK === 'boolean' ? value.fourK : defaults.fourK,
+    };
+  } catch {
+    return defaults;
+  }
+}
+
+function isControlValue(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 20 && value <= 100;
+}
+
+function isPalette(value: unknown): value is keyof typeof PALETTES {
+  return typeof value === 'string' && Object.hasOwn(PALETTES, value);
 }
 
 function escapeHtml(value: string): string {

@@ -24,9 +24,11 @@
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
     <div id="route-announcer" class="sr-only" role="status" aria-live="polite"></div>
-    <div id="offline-banner" class="offline-banner" role="status" hidden>You’re offline. The demo and visualizer still work. Phone pairing and license checks need internet.</div>
+    <div id="notice-stack" class="notice-stack">
+      <div id="offline-banner" class="offline-banner" role="status" hidden>You’re offline. The demo and visualizer still work. Phone pairing and license checks need internet.</div>
+      <div id="demo-banner" class="demo-banner" role="status" hidden><strong>Demo — sample data, nothing is saved</strong><div><button id="reset-demo" type="button">Reset demo</button><button id="start-real" type="button">Start for real</button></div></div>
+    </div>
     <div id="update-banner" class="update-banner" role="status" aria-live="polite" hidden><span>An update is ready.</span><button id="update-button" type="button">Update now</button></div>
-    <div id="demo-banner" class="demo-banner" role="status" hidden><strong>Demo — sample data, nothing is saved</strong><div><button id="reset-demo" type="button">Reset demo</button><button id="start-real" type="button">Start for real</button></div></div>
 
     <header class="site-header" id="site-header">
       <a class="wordmark" href="/" data-route aria-label="Milkdrop Web home"><span class="fern-mark" aria-hidden="true">⌁</span> Milkdrop Web</a>
