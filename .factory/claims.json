@@ -42,6 +42,13 @@
     "sandbox": "enter through /?demo=1, switch to real mode with a cached sandbox verdict, upload a logo, enable 4K, and verify checkout copy"
   },
   {
+    "id": "license-verification-cadence",
+    "claim": "A stored Venue Pack license key is sent to Sociobot for verification at most once each day.",
+    "where": "privacy page",
+    "test": "npm run test:claims -- --grep @claim:license-verification-cadence",
+    "sandbox": "fresh browser context with a local test license and controlled clock; assert one request inside 24 hours and a second request at the boundary"
+  },
+  {
     "id": "controls-access",
     "claim": "Visual choice, color, motion, full-screen chrome, settings, and stop controls work with labelled touch controls and documented keys.",
     "where": "visualizer controls, README",

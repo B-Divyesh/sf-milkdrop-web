@@ -132,6 +132,33 @@ test('@claim:venue-pack paid tools produce the stated local outcomes', async ({ 
   await expect(page.locator('.preset-chip.locked')).toHaveCount(4);
 });
 
+test('@claim:license-verification-cadence a stored license is checked no more than once per day', async ({ page }) => {
+  const start = Date.UTC(2026, 8, 5, 12);
+  const day = 86_400_000;
+  await page.addInitScript(({ epoch }) => {
+    localStorage.setItem('sb_license:milkdrop-web', 'cadence-test-license');
+    if (!localStorage.getItem('test:license-clock')) localStorage.setItem('test:license-clock', String(epoch));
+    Date.now = () => Number(localStorage.getItem('test:license-clock'));
+  }, { epoch: start });
+  const verificationRequests: string[] = [];
+  await page.route('https://api.sociobot.in/api/v1/products/milkdrop-web/verify?**', async (route) => {
+    verificationRequests.push(route.request().url());
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ valid: true, reason: 'ok' }) });
+  });
+
+  await page.goto('/');
+  await expect.poll(() => verificationRequests.length).toBe(1);
+  await page.evaluate(({ now }) => localStorage.setItem('test:license-clock', String(now)), { now: start + day - 1 });
+  await page.reload();
+  await page.waitForTimeout(200);
+  expect(verificationRequests).toHaveLength(1);
+
+  await page.evaluate(({ now }) => localStorage.setItem('test:license-clock', String(now)), { now: start + day });
+  await page.reload();
+  await expect.poll(() => verificationRequests.length).toBe(2);
+  expect(verificationRequests.every((url) => new URL(url).searchParams.get('license') === 'cadence-test-license')).toBe(true);
+});
+
 test('@claim:controls-access controls work by touch and keyboard', async ({ page }) => {
   await page.goto('/?demo=1');
   await page.locator('#next-preset').click();

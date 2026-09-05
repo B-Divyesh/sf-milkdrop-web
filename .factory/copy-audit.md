@@ -1,6 +1,6 @@
-# Copy audit — polish round 1
+# Copy audit — review 2 repair
 
-Audited 28 August 2026. Counts treat hyphenated terms as one word. No sentence exceeds 22 words. No sentence uses a banned marketing word.
+Audited 5 September 2026. Counts treat hyphenated terms as one word. No sentence exceeds 22 words. No sentence uses a banned marketing word or avoidable technical jargon.
 
 ## First screen
 
@@ -12,7 +12,7 @@ Audited 28 August 2026. Counts treat hyphenated terms as one word. No sentence e
 | Try it with sample data | 5 | Pass: sample action |
 | Your browser will ask for microphone access, then open the visualizer. | 10 | Pass: next step |
 | The sample opens without permission. | 5 | Pass |
-| Uses the room microphone; no audio routing. | 7 | Pass; claim `microphone-privacy` |
+| It listens through your device microphone; you do not connect the music source. | 13 | Pass; claim `microphone-privacy` |
 | Microphone audio stays on this device. | 6 | Pass; claim `microphone-privacy` |
 | Eight visuals are free; Venue Pack adds four. | 8 | Pass; claim `visual-count` |
 
@@ -58,7 +58,19 @@ Audited 28 August 2026. Counts treat hyphenated terms as one word. No sentence e
 | This is a one-time purchase. | 5 | Pass; claim `venue-pack` |
 | Sociobot/Dodo is the merchant of record and handles eligible refunds. | 10 | Pass; claim `venue-pack` |
 | Turn room music into full-screen visuals. | 6 | Pass |
-| Built by Param Factory · v1.1.0 | 7 | Pass |
+| Built by Param Factory · v1.1.1 | 7 | Pass |
+
+## README and 404 repair copy
+
+| Sentence or action | Words | Result |
+| --- | ---: | --- |
+| You do not connect the music source to the app. | 10 | Pass; replaces “audio routing” |
+| Eight free visuals and four Venue Pack visuals | 8 | Pass; removes implementation jargon |
+| The demo and visualizer work offline after your first visit | 10 | Pass; claim `offline-reload` |
+| The build writes a deployable static site to `dist/`. | 9 | Pass; plain developer instruction |
+| This page could not be found. | 6 | Pass; plain 404 heading |
+| The address does not match a page in Milkdrop Web. | 10 | Pass |
+| Try the sample | 3 | Pass; recovery action |
 
 ## Terminology
 

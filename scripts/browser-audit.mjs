@@ -22,9 +22,15 @@ for (const viewport of [{ name: 'mobile', width: 390, height: 844 }, { name: 'de
 
 const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
 const page = await context.newPage();
-page.on('console', (message) => { if (message.type() === 'error') errors.push(`routes: ${message.text()}`); });
+let currentRoute = '';
+page.on('console', (message) => {
+  if (message.type() !== 'error') return;
+  const expectedMissingDocument = currentRoute === '/not-a-route' && /Failed to load resource.+404/.test(message.text());
+  if (!expectedMissingDocument) errors.push(`routes: ${message.text()}`);
+});
 page.on('pageerror', (error) => errors.push(`routes: ${error.message}`));
 for (const route of ['/demo', '/privacy', '/terms', '/about', '/not-a-route']) {
+  currentRoute = route;
   await page.goto(`${base}${route}`, { waitUntil: 'networkidle' });
   if (route === '/demo') await page.locator('#stage[data-started="true"]').waitFor();
   const axe = await new AxeBuilder({ page }).analyze();

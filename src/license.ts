@@ -18,7 +18,7 @@ export class LicenseManager extends EventTarget {
     if (returned) {
       localStorage.setItem(LICENSE_KEY, returned);
       url.searchParams.delete('license');
-      history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+      history.replaceState(history.state, '', `${url.pathname}${url.search}${url.hash}`);
     }
     this.token = returned || localStorage.getItem(LICENSE_KEY) || '';
     const cached = this.readVerdict();

@@ -23,6 +23,22 @@ const initialStage = main.querySelector<HTMLElement>('#stage');
 if (!initialStage) throw new Error('Missing demo stage');
 const stageMarkup = initialStage.outerHTML;
 let teardownRoute: (() => void) | null = null;
+let historySyncFrame = 0;
+
+interface FocusSnapshot {
+  id?: string;
+  href?: string;
+  region?: 'header' | 'main' | 'footer' | 'document';
+  index?: number;
+}
+
+interface RouteHistoryState {
+  milkdropRoute?: {
+    scrollX: number;
+    scrollY: number;
+    focus: FocusSnapshot | null;
+  };
+}
 
 const updateNetworkState = (): void => {
   $('#offline-banner').toggleAttribute('hidden', navigator.onLine);
@@ -77,8 +93,10 @@ function updateMetadata(title: string, description: string, path: string): void 
 
 function routeTo(url: string | URL, replace = false): void {
   const target = url instanceof URL ? url : new URL(url, location.href);
-  if (replace) history.replaceState({}, '', `${target.pathname}${target.search}${target.hash}`);
-  else history.pushState({}, '', `${target.pathname}${target.search}${target.hash}`);
+  syncCurrentHistoryEntry();
+  const nextState: RouteHistoryState = { milkdropRoute: { scrollX: 0, scrollY: 0, focus: null } };
+  if (replace) history.replaceState(nextState, '', `${target.pathname}${target.search}${target.hash}`);
+  else history.pushState(nextState, '', `${target.pathname}${target.search}${target.hash}`);
   renderCurrentRoute(true);
 }
 
@@ -88,7 +106,63 @@ function focusRouteHeading(scroll = true): void {
     if (!heading) return;
     heading.focus({ preventScroll: !scroll });
     $('#route-announcer').textContent = heading.textContent || '';
+    syncCurrentHistoryEntry(heading);
   });
+}
+
+function captureFocus(element: Element | null = document.activeElement): FocusSnapshot | null {
+  if (!(element instanceof HTMLElement) || element === document.body) return null;
+  if (element.id) return { id: element.id };
+  if (element instanceof HTMLAnchorElement) {
+    const href = element.getAttribute('href');
+    if (!href) return null;
+    const region = element.closest('header') ? 'header' : element.closest('main') ? 'main' : element.closest('footer') ? 'footer' : 'document';
+    const root = region === 'document' ? document : document.querySelector(region);
+    const matches = root ? [...root.querySelectorAll<HTMLAnchorElement>('a[href]')].filter((link) => link.getAttribute('href') === href) : [];
+    return { href, region, index: Math.max(0, matches.indexOf(element)) };
+  }
+  return null;
+}
+
+function findSavedFocus(snapshot: FocusSnapshot | null): HTMLElement | null {
+  if (!snapshot) return null;
+  if (snapshot.id) return document.getElementById(snapshot.id);
+  if (!snapshot.href) return null;
+  const root = snapshot.region === 'document' || !snapshot.region ? document : document.querySelector(snapshot.region);
+  const matches = root ? [...root.querySelectorAll<HTMLAnchorElement>('a[href]')].filter((link) => link.getAttribute('href') === snapshot.href) : [];
+  return matches[snapshot.index ?? 0] || null;
+}
+
+function syncCurrentHistoryEntry(preferredFocus?: Element | null): void {
+  const current = history.state && typeof history.state === 'object' ? history.state as RouteHistoryState : {};
+  history.replaceState({
+    ...current,
+    milkdropRoute: {
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      focus: captureFocus(preferredFocus),
+    },
+  }, '', location.href);
+}
+
+function scheduleHistorySync(): void {
+  if (historySyncFrame) return;
+  historySyncFrame = requestAnimationFrame(() => {
+    historySyncFrame = 0;
+    syncCurrentHistoryEntry();
+  });
+}
+
+function restoreHistoryEntry(state: RouteHistoryState | null): void {
+  const saved = state?.milkdropRoute;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const heading = document.querySelector<HTMLElement>('main h1');
+    if (saved) window.scrollTo(saved.scrollX, saved.scrollY);
+    const focusTarget = findSavedFocus(saved?.focus ?? null) || heading;
+    focusTarget?.focus({ preventScroll: true });
+    if (heading) $('#route-announcer').textContent = heading.textContent || '';
+    syncCurrentHistoryEntry(focusTarget);
+  }));
 }
 
 function renderCurrentRoute(focus = false): void {
@@ -99,6 +173,7 @@ function renderCurrentRoute(focus = false): void {
   $('#demo-banner').setAttribute('hidden', '');
   $('#site-header').removeAttribute('hidden');
   $('#site-footer').removeAttribute('hidden');
+  document.body.classList.remove('demo-active');
 
   const url = new URL(location.href);
   const remoteCode = url.searchParams.get('remote');
@@ -256,8 +331,9 @@ function setupVisualizer(demoMode: boolean): () => void {
       $('#input-label').textContent = sample ? 'Sample track · 120 BPM' : 'Room microphone live';
       landing?.setAttribute('hidden', '');
       homePage?.setAttribute('hidden', '');
-      header.setAttribute('hidden', '');
-      footer.setAttribute('hidden', '');
+      header.toggleAttribute('hidden', !sample);
+      footer.toggleAttribute('hidden', !sample);
+      document.body.classList.toggle('demo-active', sample);
       stage.removeAttribute('hidden');
       stage.dataset.mode = sample ? 'demo' : 'microphone';
       stage.dataset.started = 'true';
@@ -498,6 +574,7 @@ function setupVisualizer(demoMode: boolean): () => void {
     visualizer?.destroy();
     remote?.stop();
     document.body.style.overflow = '';
+    document.body.classList.remove('demo-active');
     restoreForm.removeAttribute('hidden');
   };
 }
@@ -528,6 +605,12 @@ document.querySelectorAll<HTMLButtonElement>('.dialog-close').forEach((button) =
 document.querySelectorAll<HTMLDialogElement>('dialog').forEach((dialog) => dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); }));
 $('#reset-demo').addEventListener('click', () => routeTo('/?demo=1', true));
 $('#start-real').addEventListener('click', () => routeTo('/'));
-window.addEventListener('popstate', () => renderCurrentRoute(true));
+window.addEventListener('scroll', scheduleHistorySync, { passive: true });
+document.addEventListener('focusin', scheduleHistorySync);
+window.addEventListener('popstate', (event) => {
+  renderCurrentRoute(false);
+  restoreHistoryEntry(event.state as RouteHistoryState | null);
+});
 history.scrollRestoration = 'manual';
 renderCurrentRoute(false);
+syncCurrentHistoryEntry();

@@ -1,1 +1,1 @@
-Turn room music into full-screen botanical visuals for TVs and projectors—without routing audio.
+Turn room music into full-screen visuals on a TV or projector using its microphone.

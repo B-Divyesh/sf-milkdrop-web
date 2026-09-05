@@ -81,7 +81,7 @@ export function notFoundPage(path: string): StaticPage {
   return {
     title: 'Page not found — Milkdrop Web',
     description: 'This Milkdrop Web page could not be found.',
-    html: `<section class="not-found-page"><p class="effective">MISSING SPECIMEN / 404</p><h1 id="page-title" tabindex="-1">This page is not in the field guide.</h1><p>There is no page at <code>${escapeHtml(path)}</code>.</p><a class="primary-button" href="/" data-route>Return home</a></section>`,
+    html: `<section class="not-found-page"><p class="effective">404 / PAGE NOT FOUND</p><h1 id="page-title" tabindex="-1">This page could not be found.</h1><p>There is no page at <code>${escapeHtml(path)}</code>.</p><div class="button-row"><a class="primary-button" href="/" data-route>Return home</a><a class="secondary-button paper" href="/demo" data-route>Try the sample</a></div></section>`,
   };
 }
 

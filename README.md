@@ -2,17 +2,17 @@
 
 Turn room music into full-screen botanical visuals for TVs and projectors.
 
-Milkdrop Web is for party hosts, musicians, rehearsal rooms, and venues. Open the site and allow its microphone. No audio routing is needed.
+Milkdrop Web is for party hosts, musicians, rehearsal rooms, and venues. Open the site and allow its microphone. You do not connect the music source to the app.
 
 [Try it with sample data](https://milkdrop-web.sociobot.in/?demo=1). The demo starts a bundled 120 BPM signal without asking for microphone access.
 
 ## Included features
 
-- Eight free WebGL visuals and four Venue Pack visuals
+- Eight free visuals and four Venue Pack visuals
 - Visual choice, four color palettes, motion tuning, and microphone sensitivity
 - Labelled touch controls and keyboard controls
 - Full-screen mode and optional phone pairing
-- An offline app shell that keeps the demo and visualizer available after the first visit
+- The demo and visualizer work offline after your first visit
 - A one-time $19 USD Venue Pack with four visuals, a session-only logo overlay, and a 3840 × 2160 canvas control
 
 Microphone audio is analyzed in browser memory. It is not recorded, transcribed, stored, or uploaded. The app includes no trackers.
@@ -49,7 +49,7 @@ npm run audit:pwa
 
 Every public product promise is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names one tagged browser test.
 
-The production command emits a static `dist/` root. It includes `index.html`, the service worker, and Azure routing with security headers. Initial JavaScript stays below 200 KB.
+The build writes a deployable static site to `dist/`. It includes `index.html`, the service worker, and Azure routing with security headers. Initial JavaScript stays below 200 KB.
 
 Deploy the contents of `dist/` as an Azure Static Web App. The repository does not manage DNS, billing, or infrastructure.
 

@@ -34,7 +34,8 @@ All body pairings meet WCAG AA. Pollen is used as a fill or large marker, not sm
 ## Interaction grammar
 
 - The primary action is a large lozenge labelled “Listen to the room”. A bordered “Try it with sample data” action sits beside it.
-- Demo mode opens the full visualizer immediately. A warm-paper banner remains above the stage and provides Reset and Start for real actions.
+- Demo mode opens the full visualizer immediately. A warm-paper banner provides Reset and Start for real actions.
+- A compact dark header and footer remain visible around the demo. The visual controls keep a 12 px clearance from both shell bars on phones.
 - Controls appear as a bottom visual drawer. It can be hidden with `H` and restored with the labelled Show controls action.
 - Visuals are a horizontally scrollable numbered strip. Left/right arrows change visuals, space stops, `F` enters full screen, and `C` opens settings.
 - Beat feedback uses a breathing ring and the labels “Beat found” or “Listening for the beat”. It never depends on color alone.
