@@ -1,4 +1,17 @@
-# Milkdrop Web — repair 2 handoff
+# Milkdrop Web — review 3 handoff
+
+## Review 3
+
+Strict review on 5 September 2026 produced a **FAIL** with two findings and zero untested public claims. The reviewed implementation is `ada4cc4194323a43278a3b766455637319afe05b`; the documentation baseline before this report is `b535fefa6a415208f1b506e1e544aa495e42ea13`. The live `index.html` remains byte-identical to the clean candidate build.
+
+- **F-3-1, high:** invalid persisted visual or preference values throw during real-mode setup before the main controls are wired. Validate and default every stored value, then cover direct home load and demo exit with wrong-type, null, negative, and out-of-range state.
+- **F-3-2, medium:** at 390 px while offline in the demo, the 88 px offline notice and demo notice overlap by 48 px. Stack the notices without fixed one-line assumptions and add 320 px and 390 px overlap checks.
+
+All eleven declared claim commands passed separately from a clean detached checkout. `npm test`, `npm run build`, the 22-test browser suite, the local axe audit, the PWA offline/update audit, the live route/link/header checks, and live Lighthouse also passed. Live Lighthouse scored 100 in Performance, Accessibility, Best Practices, and SEO, with LCP 1.2 s, CLS 0, and TBT 0 ms.
+
+Fresh live phone and desktop first screens clearly showed the job, audience, real microphone action, sample action, next step, and three facts before scrolling. The populated sample, valid-state isolation, Reset, Start for real, microphone denial recovery, keyboard/focus paths, reduced motion, live phone pairing, invalid license, legal pages, and designed HTTP 404 passed. The mobile offline visualizer remained functional; only its overlapping notices fail review.
+
+No product code was changed. See `.factory/review-3.md` for reproduction details and complete evidence. Review evidence is also copied to `/work/.evidence/qa-report.md`, with the machine verdict in `/work/.evidence/qa-result.json`. The pre-existing modified `graphify-out` files remain untouched and unstaged.
 
 ## Verification 3
 
