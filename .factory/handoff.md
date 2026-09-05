@@ -64,3 +64,31 @@ The live and local `index.html` SHA-256 values both equal `23c855d04a53e40d5e2cf
 - The pre-existing modified `graphify-out` files were not staged, committed, deployed, or changed.
 
 The implementation SHA above differs from the later documentation commit that records this handoff; that documentation SHA is reported with the final work-order result.
+
+---
+
+# Verification 4 handoff
+
+## Outcome
+
+**FAIL** — implementation `4385e735d3e385bfaf922e2d2f799c531eb1c082` was independently checked against <https://milkdrop-web.sociobot.in>. Documentation commit: `28d844ce5806fb785c0aa39036908b11af6395bb`.
+
+The live site matches the candidate `index.html` byte-for-byte. The product flow, demo isolation/reset, recovery states, responsive offline notices, accessibility, route design, PWA behaviour, and all eleven declared claims passed. One medium documentation/verification finding remains: `README.md` presents `npm run audit` as a test command, but it fails after the documented clean setup unless an undocumented `npm run preview -- --host 127.0.0.1` server is already running.
+
+## How verified
+
+- Detached clean checkout: `/tmp/milkdrop-web-verify-4` at the implementation commit.
+- `npm ci`, `npm test`, and `npm run build` passed.
+- All 11 `npm run test:claims -- --grep @claim:<id>` commands passed separately.
+- `npm run test:browser` passed 25/25.
+- `npm run audit:pwa` passed.
+- `npm run audit` passes when a built preview is explicitly running; it is the outstanding documentation gap when invoked exactly as listed in README.
+- Live 390 × 844 and 1440 × 900 cold-page checks showed the job, audience, actions, guidance, and facts before scrolling. Live demo reset/data isolation, denied-microphone recovery, 320/390 px offline layout, routes, link reachability, and Axe scans passed.
+
+## Required follow-up
+
+Fix or document the preview-server prerequisite for `npm run audit`, then repeat the documented clean setup sequence and update the verification verdict.
+
+## Limits
+
+No physical microphone or paid purchase was available. Deterministic browser coverage exercised those code paths without treating either environment limit as an untested public claim. Lighthouse could not launch against the supplied Chromium binary in this container; see `.factory/verification-4.md` for the exact scope.
