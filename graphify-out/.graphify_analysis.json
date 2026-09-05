@@ -197,9 +197,6 @@
       "playwright_config"
     ],
     "14": [
-      "qrcode_qrcode"
-    ],
-    "15": [
       "tests_product_spec"
     ]
   },
@@ -218,8 +215,7 @@
     "11": 1.0,
     "12": 0.6666666666666666,
     "13": 1.0,
-    "14": 1.0,
-    "15": 1.0
+    "14": 1.0
   },
   "gods": [
     {
@@ -233,13 +229,13 @@
       "degree": 12
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
+      "id": "package_scripts",
+      "label": "scripts",
       "degree": 10
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "degree": 10
     },
     {
@@ -253,23 +249,23 @@
       "degree": 8
     },
     {
-      "id": "src_audio_analysis_beattracker",
-      "label": "BeatTracker",
-      "degree": 6
-    },
-    {
       "id": "src_audio_roomaudio",
       "label": "RoomAudio",
       "degree": 6
     },
     {
-      "id": "src_main_synccurrenthistoryentry",
-      "label": "syncCurrentHistoryEntry()",
+      "id": "src_audio_analysis_beattracker",
+      "label": "BeatTracker",
       "degree": 6
     },
     {
       "id": "src_main_renderphoneremote",
       "label": "renderPhoneRemote()",
+      "degree": 6
+    },
+    {
+      "id": "src_main_synccurrenthistoryentry",
+      "label": "syncCurrentHistoryEntry()",
       "degree": 6
     }
   ],

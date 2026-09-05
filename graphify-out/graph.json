@@ -1225,20 +1225,10 @@
       "source_location": "L1"
     },
     {
-      "id": "qrcode_qrcode",
-      "label": "qrcode",
-      "_origin": "ast",
-      "community": 14,
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "qrcode",
-      "source_file": "qrcode"
-    },
-    {
       "id": "tests_product_spec",
       "label": "product.spec.ts",
       "_origin": "ast",
-      "community": 15,
+      "community": 14,
       "file_type": "code",
       "norm_label": "product.spec.ts",
       "source_file": "tests/product.spec.ts",
@@ -4410,5 +4400,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0415c596e1263d9263cc58bdc29176ee6ae3867a"
+  "built_at_commit": "b535fefa6a415208f1b506e1e544aa495e42ea13"
 }
