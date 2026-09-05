@@ -10,17 +10,23 @@
       "src_legal_staticpage",
       "src_legal_terms",
       "src_main",
+      "src_main_capturefocus",
       "src_main_escapehtml",
+      "src_main_findsavedfocus",
       "src_main_focusrouteheading",
+      "src_main_focussnapshot",
       "src_main_initialstage",
       "src_main_main",
-      "src_main_readpreferences",
       "src_main_registerserviceworker",
       "src_main_rendercurrentroute",
       "src_main_renderphoneremote",
       "src_main_renderstaticpage",
+      "src_main_restorehistoryentry",
+      "src_main_routehistorystate",
       "src_main_routeto",
+      "src_main_schedulehistorysync",
       "src_main_setupvisualizer_stop",
+      "src_main_synccurrenthistoryentry",
       "src_main_updatemetadata",
       "src_main_updatenetworkstate",
       "src_remote",
@@ -39,7 +45,6 @@
       "package_dependencies",
       "package_dependencies_peerjs",
       "package_dependencies_qrcode",
-      "package_json_peerjs",
       "package_json_qrcode",
       "package_name",
       "package_private",
@@ -54,7 +59,8 @@
       "package_scripts_test_claims",
       "package_scripts_test_watch",
       "package_type",
-      "package_version"
+      "package_version",
+      "peerjs"
     ],
     "2": [
       "ref_dom",
@@ -77,6 +83,24 @@
       "tsconfig_include"
     ],
     "3": [
+      "src_audio_roomaudio",
+      "src_audio_roomaudio_loop",
+      "src_audio_roomaudio_start",
+      "src_audio_roomaudio_startdemo",
+      "src_audio_roomaudio_stop",
+      "src_main_opendialog",
+      "src_main_readpreferences",
+      "src_main_setupvisualizer",
+      "src_main_setupvisualizer_applytuning",
+      "src_main_setupvisualizer_handleremote",
+      "src_main_setupvisualizer_nextavailable",
+      "src_main_setupvisualizer_onframe",
+      "src_main_setupvisualizer_renderpreset",
+      "src_main_setupvisualizer_selectpreset",
+      "src_main_setupvisualizer_showstatus",
+      "src_main_setupvisualizer_updateoutputs"
+    ],
+    "4": [
       "axe_core_playwright",
       "package_devdependencies",
       "package_devdependencies_axe_core_playwright",
@@ -93,7 +117,7 @@
       "vite",
       "vitest"
     ],
-    "4": [
+    "5": [
       "src_audio",
       "src_audio_analysis",
       "src_audio_analysis_audioframe",
@@ -109,23 +133,6 @@
       "src_presets_preset",
       "src_presets_presets",
       "src_visualizer"
-    ],
-    "5": [
-      "src_audio_roomaudio",
-      "src_audio_roomaudio_loop",
-      "src_audio_roomaudio_start",
-      "src_audio_roomaudio_startdemo",
-      "src_audio_roomaudio_stop",
-      "src_main_opendialog",
-      "src_main_setupvisualizer",
-      "src_main_setupvisualizer_applytuning",
-      "src_main_setupvisualizer_handleremote",
-      "src_main_setupvisualizer_nextavailable",
-      "src_main_setupvisualizer_onframe",
-      "src_main_setupvisualizer_renderpreset",
-      "src_main_setupvisualizer_selectpreset",
-      "src_main_setupvisualizer_showstatus",
-      "src_main_setupvisualizer_updateoutputs"
     ],
     "6": [
       "src_visualizer_visualizer",
@@ -182,31 +189,37 @@
       "tests_helpers_installmicrophonestub"
     ],
     "12": [
-      "playwright_config"
+      "vite_config",
+      "vite_config_approutes",
+      "vite_config_configurepreviewserver"
     ],
     "13": [
-      "tests_product_spec"
+      "playwright_config"
     ],
     "14": [
-      "vite_config"
+      "qrcode_qrcode"
+    ],
+    "15": [
+      "tests_product_spec"
     ]
   },
   "cohesion": {
-    "0": 0.10080645161290322,
+    "0": 0.08819345661450925,
     "1": 0.1,
     "2": 0.1111111111111111,
-    "3": 0.13333333333333333,
-    "4": 0.19047619047619047,
-    "5": 0.26666666666666666,
+    "3": 0.24166666666666667,
+    "4": 0.13333333333333333,
+    "5": 0.19047619047619047,
     "6": 0.2545454545454545,
     "7": 0.3333333333333333,
     "8": 0.2222222222222222,
     "9": 0.4,
     "10": 0.5,
     "11": 1.0,
-    "12": 1.0,
+    "12": 0.6666666666666666,
     "13": 1.0,
-    "14": 1.0
+    "14": 1.0,
+    "15": 1.0
   },
   "gods": [
     {
@@ -220,13 +233,13 @@
       "degree": 12
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "degree": 10
     },
     {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
+      "id": "package_scripts",
+      "label": "scripts",
       "degree": 10
     },
     {
@@ -250,13 +263,13 @@
       "degree": 6
     },
     {
-      "id": "src_main_renderphoneremote",
-      "label": "renderPhoneRemote()",
+      "id": "src_main_synccurrenthistoryentry",
+      "label": "syncCurrentHistoryEntry()",
       "degree": 6
     },
     {
-      "id": "src_main_setupvisualizer_handleremote",
-      "label": "handleRemote()",
+      "id": "src_main_renderphoneremote",
+      "label": "renderPhoneRemote()",
       "degree": 6
     }
   ],

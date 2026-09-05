@@ -16,6 +16,30 @@
       "source_location": "L1"
     },
     {
+      "id": "src_main_focussnapshot",
+      "label": "FocusSnapshot",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "focussnapshot",
+      "source_file": "src/main.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "src_main_routehistorystate",
+      "label": "RouteHistoryState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "routehistorystate",
+      "source_file": "src/main.ts",
+      "source_location": "L35"
+    },
+    {
       "id": "src_remote_phoneremote",
       "label": "PhoneRemote",
       "_callable": true,
@@ -52,12 +76,24 @@
       "source_location": "L14"
     },
     {
+      "id": "src_audio_roomaudio",
+      "label": "RoomAudio",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "roomaudio",
+      "source_file": "src/audio.ts",
+      "source_location": "L7"
+    },
+    {
       "id": "src_audio_analysis_audioframe",
       "label": "AudioFrame",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "audioframe",
       "source_file": "src/audio-analysis.ts",
@@ -69,7 +105,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "beattracker",
       "source_file": "src/audio-analysis.ts",
@@ -81,7 +117,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "framelistener",
       "source_file": "src/audio.ts",
@@ -93,23 +129,11 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "preset",
       "source_file": "src/presets.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_audio_roomaudio",
-      "label": "RoomAudio",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": "roomaudio",
-      "source_file": "src/audio.ts",
-      "source_location": "L7"
     },
     {
       "id": "src_visualizer_visualizer",
@@ -193,6 +217,17 @@
       "source_location": "L80"
     },
     {
+      "id": "src_main_capturefocus",
+      "label": "captureFocus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "capturefocus()",
+      "source_file": "src/main.ts",
+      "source_location": "L113"
+    },
+    {
       "id": "src_main_escapehtml",
       "label": "escapeHtml()",
       "_callable": true,
@@ -201,7 +236,18 @@
       "file_type": "code",
       "norm_label": "escapehtml()",
       "source_file": "src/main.ts",
-      "source_location": "L514"
+      "source_location": "L591"
+    },
+    {
+      "id": "src_main_findsavedfocus",
+      "label": "findSavedFocus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "findsavedfocus()",
+      "source_file": "src/main.ts",
+      "source_location": "L127"
     },
     {
       "id": "src_main_focusrouteheading",
@@ -212,18 +258,7 @@
       "file_type": "code",
       "norm_label": "focusrouteheading()",
       "source_file": "src/main.ts",
-      "source_location": "L85"
-    },
-    {
-      "id": "src_main_readpreferences",
-      "label": "readPreferences()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "file_type": "code",
-      "norm_label": "readpreferences()",
-      "source_file": "src/main.ts",
-      "source_location": "L509"
+      "source_location": "L103"
     },
     {
       "id": "src_main_registerserviceworker",
@@ -234,7 +269,7 @@
       "file_type": "code",
       "norm_label": "registerserviceworker()",
       "source_file": "src/main.ts",
-      "source_location": "L38"
+      "source_location": "L54"
     },
     {
       "id": "src_main_rendercurrentroute",
@@ -245,7 +280,7 @@
       "file_type": "code",
       "norm_label": "rendercurrentroute()",
       "source_file": "src/main.ts",
-      "source_location": "L94"
+      "source_location": "L168"
     },
     {
       "id": "src_main_renderphoneremote",
@@ -256,7 +291,7 @@
       "file_type": "code",
       "norm_label": "renderphoneremote()",
       "source_file": "src/main.ts",
-      "source_location": "L157"
+      "source_location": "L232"
     },
     {
       "id": "src_main_renderstaticpage",
@@ -267,7 +302,18 @@
       "file_type": "code",
       "norm_label": "renderstaticpage()",
       "source_file": "src/main.ts",
-      "source_location": "L151"
+      "source_location": "L226"
+    },
+    {
+      "id": "src_main_restorehistoryentry",
+      "label": "restoreHistoryEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "restorehistoryentry()",
+      "source_file": "src/main.ts",
+      "source_location": "L156"
     },
     {
       "id": "src_main_routeto",
@@ -278,7 +324,18 @@
       "file_type": "code",
       "norm_label": "routeto()",
       "source_file": "src/main.ts",
-      "source_location": "L78"
+      "source_location": "L94"
+    },
+    {
+      "id": "src_main_schedulehistorysync",
+      "label": "scheduleHistorySync()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "schedulehistorysync()",
+      "source_file": "src/main.ts",
+      "source_location": "L148"
     },
     {
       "id": "src_main_setupvisualizer_stop",
@@ -289,7 +346,18 @@
       "file_type": "code",
       "norm_label": "stop()",
       "source_file": "src/main.ts",
-      "source_location": "L356"
+      "source_location": "L432"
+    },
+    {
+      "id": "src_main_synccurrenthistoryentry",
+      "label": "syncCurrentHistoryEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "synccurrenthistoryentry()",
+      "source_file": "src/main.ts",
+      "source_location": "L136"
     },
     {
       "id": "src_main_updatemetadata",
@@ -300,7 +368,7 @@
       "file_type": "code",
       "norm_label": "updatemetadata()",
       "source_file": "src/main.ts",
-      "source_location": "L67"
+      "source_location": "L83"
     },
     {
       "id": "src_main_updatenetworkstate",
@@ -311,7 +379,7 @@
       "file_type": "code",
       "norm_label": "updatenetworkstate()",
       "source_file": "src/main.ts",
-      "source_location": "L27"
+      "source_location": "L43"
     },
     {
       "id": "src_remote_createcode",
@@ -391,44 +459,22 @@
       "source_location": "L3"
     },
     {
-      "id": "src_audio_analysis_beattracker_reset",
-      "label": ".reset()",
+      "id": "vite_config_configurepreviewserver",
+      "label": "configurePreviewServer()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 12,
       "file_type": "code",
-      "norm_label": ".reset()",
-      "source_file": "src/audio-analysis.ts",
-      "source_location": "L66"
-    },
-    {
-      "id": "src_audio_analysis_beattracker_tempo",
-      "label": ".tempo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".tempo()",
-      "source_file": "src/audio-analysis.ts",
-      "source_location": "L75"
-    },
-    {
-      "id": "src_audio_analysis_beattracker_update",
-      "label": ".update()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".update()",
-      "source_file": "src/audio-analysis.ts",
-      "source_location": "L20"
+      "norm_label": "configurepreviewserver()",
+      "source_file": "vite.config.ts",
+      "source_location": "L10"
     },
     {
       "id": "src_audio_roomaudio_loop",
       "label": ".loop()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": ".loop()",
       "source_file": "src/audio.ts",
@@ -439,7 +485,7 @@
       "label": ".start()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": ".start()",
       "source_file": "src/audio.ts",
@@ -450,7 +496,7 @@
       "label": ".startDemo()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": ".startdemo()",
       "source_file": "src/audio.ts",
@@ -461,7 +507,7 @@
       "label": ".stop()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": ".stop()",
       "source_file": "src/audio.ts",
@@ -472,110 +518,154 @@
       "label": "openDialog()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "opendialog()",
       "source_file": "src/main.ts",
-      "source_location": "L505"
+      "source_location": "L582"
+    },
+    {
+      "id": "src_main_readpreferences",
+      "label": "readPreferences()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "readpreferences()",
+      "source_file": "src/main.ts",
+      "source_location": "L586"
     },
     {
       "id": "src_main_setupvisualizer",
       "label": "setupVisualizer()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "setupvisualizer()",
       "source_file": "src/main.ts",
-      "source_location": "L195"
+      "source_location": "L270"
     },
     {
       "id": "src_main_setupvisualizer_applytuning",
       "label": "applyTuning()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "applytuning()",
       "source_file": "src/main.ts",
-      "source_location": "L332"
+      "source_location": "L408"
     },
     {
       "id": "src_main_setupvisualizer_handleremote",
       "label": "handleRemote()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "handleremote()",
       "source_file": "src/main.ts",
-      "source_location": "L413"
+      "source_location": "L489"
     },
     {
       "id": "src_main_setupvisualizer_nextavailable",
       "label": "nextAvailable()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "nextavailable()",
       "source_file": "src/main.ts",
-      "source_location": "L325"
+      "source_location": "L401"
     },
     {
       "id": "src_main_setupvisualizer_onframe",
       "label": "onFrame()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "onframe()",
       "source_file": "src/main.ts",
-      "source_location": "L284"
+      "source_location": "L360"
     },
     {
       "id": "src_main_setupvisualizer_renderpreset",
       "label": "renderPreset()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "renderpreset()",
       "source_file": "src/main.ts",
-      "source_location": "L314"
+      "source_location": "L390"
     },
     {
       "id": "src_main_setupvisualizer_selectpreset",
       "label": "selectPreset()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "selectpreset()",
       "source_file": "src/main.ts",
-      "source_location": "L300"
+      "source_location": "L376"
     },
     {
       "id": "src_main_setupvisualizer_showstatus",
       "label": "showStatus()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "showstatus()",
       "source_file": "src/main.ts",
-      "source_location": "L348"
+      "source_location": "L424"
     },
     {
       "id": "src_main_setupvisualizer_updateoutputs",
       "label": "updateOutputs()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 3,
       "file_type": "code",
       "norm_label": "updateoutputs()",
       "source_file": "src/main.ts",
-      "source_location": "L343"
+      "source_location": "L419"
+    },
+    {
+      "id": "src_audio_analysis_beattracker_reset",
+      "label": ".reset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "file_type": "code",
+      "norm_label": ".reset()",
+      "source_file": "src/audio-analysis.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "src_audio_analysis_beattracker_tempo",
+      "label": ".tempo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "file_type": "code",
+      "norm_label": ".tempo()",
+      "source_file": "src/audio-analysis.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "src_audio_analysis_beattracker_update",
+      "label": ".update()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "file_type": "code",
+      "norm_label": ".update()",
+      "source_file": "src/audio-analysis.ts",
+      "source_location": "L20"
     },
     {
       "id": "src_visualizer_visualizer_constructor",
@@ -1025,16 +1115,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_json_peerjs",
-      "label": "peerjs",
-      "_origin": "ast",
-      "community": 1,
-      "file_type": "concept",
-      "norm_label": "peerjs",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
       "id": "package_json_qrcode",
       "label": "qrcode",
       "_origin": "ast",
@@ -1043,6 +1123,16 @@
       "norm_label": "qrcode",
       "source_file": "package.json",
       "source_location": "L19"
+    },
+    {
+      "id": "peerjs",
+      "label": "peerjs",
+      "_origin": "ast",
+      "community": 1,
+      "file_type": "concept",
+      "norm_label": "peerjs",
+      "source_file": "package.json",
+      "source_location": "L18"
     },
     {
       "id": "scripts_browser_audit",
@@ -1082,7 +1172,7 @@
       "file_type": "code",
       "norm_label": "violations",
       "source_file": "scripts/browser-audit.mjs",
-      "source_location": "L36"
+      "source_location": "L42"
     },
     {
       "id": "tests_claims_spec",
@@ -1105,33 +1195,53 @@
       "source_location": "L1"
     },
     {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 12,
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "vite_config_approutes",
+      "label": "appRoutes",
+      "_origin": "ast",
+      "community": 12,
+      "file_type": "code",
+      "norm_label": "approutes",
+      "source_file": "vite.config.ts",
+      "source_location": "L5"
+    },
+    {
       "id": "playwright_config",
       "label": "playwright.config.ts",
       "_origin": "ast",
-      "community": 12,
+      "community": 13,
       "file_type": "code",
       "norm_label": "playwright.config.ts",
       "source_file": "playwright.config.ts",
       "source_location": "L1"
     },
     {
+      "id": "qrcode_qrcode",
+      "label": "qrcode",
+      "_origin": "ast",
+      "community": 14,
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "qrcode",
+      "source_file": "qrcode"
+    },
+    {
       "id": "tests_product_spec",
       "label": "product.spec.ts",
       "_origin": "ast",
-      "community": 13,
+      "community": 15,
       "file_type": "code",
       "norm_label": "product.spec.ts",
       "source_file": "tests/product.spec.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 14,
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
       "source_location": "L1"
     },
     {
@@ -1318,7 +1428,7 @@
       "id": "package_devdependencies",
       "label": "devDependencies",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
@@ -1328,7 +1438,7 @@
       "id": "package_devdependencies_axe_core_playwright",
       "label": "@axe-core/playwright",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "@axe-core/playwright",
       "source_file": "package.json",
@@ -1338,7 +1448,7 @@
       "id": "package_devdependencies_playwright",
       "label": "playwright",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "playwright",
       "source_file": "package.json",
@@ -1348,7 +1458,7 @@
       "id": "package_devdependencies_playwright_test",
       "label": "@playwright/test",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
@@ -1358,7 +1468,7 @@
       "id": "package_devdependencies_types_qrcode",
       "label": "@types/qrcode",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "@types/qrcode",
       "source_file": "package.json",
@@ -1368,7 +1478,7 @@
       "id": "package_devdependencies_typescript",
       "label": "typescript",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
@@ -1378,7 +1488,7 @@
       "id": "package_devdependencies_vite",
       "label": "vite",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "vite",
       "source_file": "package.json",
@@ -1388,7 +1498,7 @@
       "id": "package_devdependencies_vitest",
       "label": "vitest",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "code",
       "norm_label": "vitest",
       "source_file": "package.json",
@@ -1398,7 +1508,7 @@
       "id": "axe_core_playwright",
       "label": "@axe-core/playwright",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "@axe-core/playwright",
       "source_file": "package.json",
@@ -1408,7 +1518,7 @@
       "id": "playwright",
       "label": "playwright",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "playwright",
       "source_file": "package.json",
@@ -1418,7 +1528,7 @@
       "id": "playwright_test",
       "label": "@playwright/test",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "@playwright/test",
       "source_file": "package.json",
@@ -1428,7 +1538,7 @@
       "id": "types_qrcode",
       "label": "@types/qrcode",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "@types/qrcode",
       "source_file": "package.json",
@@ -1438,7 +1548,7 @@
       "id": "typescript",
       "label": "typescript",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
@@ -1448,7 +1558,7 @@
       "id": "vite",
       "label": "vite",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "package.json",
@@ -1458,7 +1568,7 @@
       "id": "vitest",
       "label": "vitest",
       "_origin": "ast",
-      "community": 3,
+      "community": 4,
       "file_type": "concept",
       "norm_label": "vitest",
       "source_file": "package.json",
@@ -1468,7 +1578,7 @@
       "id": "src_audio",
       "label": "audio.ts",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "audio.ts",
       "source_file": "src/audio.ts",
@@ -1478,7 +1588,7 @@
       "id": "src_audio_analysis",
       "label": "audio-analysis.ts",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "audio-analysis.ts",
       "source_file": "src/audio-analysis.ts",
@@ -1488,7 +1598,7 @@
       "id": "src_audio_analysis_test",
       "label": "audio-analysis.test.ts",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "audio-analysis.test.ts",
       "source_file": "src/audio-analysis.test.ts",
@@ -1498,7 +1608,7 @@
       "id": "src_audio_quiet_frame",
       "label": "QUIET_FRAME",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "quiet_frame",
       "source_file": "src/audio.ts",
@@ -1508,7 +1618,7 @@
       "id": "src_presets",
       "label": "presets.ts",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "presets.ts",
       "source_file": "src/presets.ts",
@@ -1518,7 +1628,7 @@
       "id": "src_presets_palettes",
       "label": "PALETTES",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "palettes",
       "source_file": "src/presets.ts",
@@ -1528,7 +1638,7 @@
       "id": "src_presets_presets",
       "label": "PRESETS",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "presets",
       "source_file": "src/presets.ts",
@@ -1538,7 +1648,7 @@
       "id": "src_visualizer",
       "label": "visualizer.ts",
       "_origin": "ast",
-      "community": 4,
+      "community": 5,
       "file_type": "code",
       "norm_label": "visualizer.ts",
       "source_file": "src/visualizer.ts",
@@ -1819,20 +1929,8 @@
       "weight": 1.0
     },
     {
-      "source": "src_main_rendercurrentroute",
-      "target": "src_main_renderphoneremote",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main.ts",
-      "source_location": "L108",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_rendercurrentroute",
-      "target": "src_main_updatemetadata",
+      "source": "src_main_focusrouteheading",
+      "target": "src_main_synccurrenthistoryentry",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1844,6 +1942,30 @@
     },
     {
       "source": "src_main_rendercurrentroute",
+      "target": "src_main_renderphoneremote",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_rendercurrentroute",
+      "target": "src_main_updatemetadata",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_rendercurrentroute",
       "target": "src_main_focusrouteheading",
       "relation": "calls",
       "_origin": "ast",
@@ -1851,7 +1973,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L110",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -1863,7 +1985,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L124",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -1875,7 +1997,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L129",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -1887,7 +2009,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L131",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -1899,7 +2021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L147",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -1911,7 +2033,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L162",
+      "source_location": "L237",
       "weight": 1.0
     },
     {
@@ -1923,7 +2045,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L192",
+      "source_location": "L267",
       "weight": 1.0
     },
     {
@@ -1935,7 +2057,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L153",
+      "source_location": "L228",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_restorehistoryentry",
+      "target": "src_main_findsavedfocus",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_restorehistoryentry",
+      "target": "src_main_synccurrenthistoryentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -1947,7 +2093,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L82",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_routeto",
+      "target": "src_main_synccurrenthistoryentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_schedulehistorysync",
+      "target": "src_main_synccurrenthistoryentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -1959,7 +2129,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L225",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -1971,7 +2141,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L391",
+      "source_location": "L467",
       "weight": 1.0
     },
     {
@@ -1983,7 +2153,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L414",
+      "source_location": "L490",
       "weight": 1.0
     },
     {
@@ -1995,7 +2165,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L414",
+      "source_location": "L490",
       "weight": 1.0
     },
     {
@@ -2007,7 +2177,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L416",
+      "source_location": "L492",
       "weight": 1.0
     },
     {
@@ -2019,7 +2189,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L416",
+      "source_location": "L492",
       "weight": 1.0
     },
     {
@@ -2031,7 +2201,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L419",
+      "source_location": "L495",
       "weight": 1.0
     },
     {
@@ -2043,7 +2213,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L291",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -2055,7 +2225,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L291",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -2067,7 +2237,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L303",
+      "source_location": "L379",
       "weight": 1.0
     },
     {
@@ -2079,7 +2249,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L310",
+      "source_location": "L386",
       "weight": 1.0
     },
     {
@@ -2091,7 +2261,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L311",
+      "source_location": "L387",
       "weight": 1.0
     },
     {
@@ -2103,7 +2273,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L358",
+      "source_location": "L434",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_synccurrenthistoryentry",
+      "target": "src_main_capturefocus",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main.ts",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -2163,7 +2345,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L300",
+      "source_location": "L376",
       "weight": 1.0
     },
     {
@@ -2175,7 +2357,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L314",
+      "source_location": "L390",
       "weight": 1.0
     },
     {
@@ -2187,7 +2369,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L325",
+      "source_location": "L401",
       "weight": 1.0
     },
     {
@@ -2199,7 +2381,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L332",
+      "source_location": "L408",
       "weight": 1.0
     },
     {
@@ -2211,7 +2393,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L343",
+      "source_location": "L419",
       "weight": 1.0
     },
     {
@@ -2223,7 +2405,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L348",
+      "source_location": "L424",
       "weight": 1.0
     },
     {
@@ -2235,7 +2417,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L356",
+      "source_location": "L432",
       "weight": 1.0
     },
     {
@@ -2247,7 +2429,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L413",
+      "source_location": "L489",
       "weight": 1.0
     },
     {
@@ -2324,7 +2506,7 @@
     },
     {
       "source": "package_dependencies_peerjs",
-      "target": "package_json_peerjs",
+      "target": "peerjs",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3061,7 +3243,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/browser-audit.mjs",
-      "source_location": "L36",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -3385,35 +3567,68 @@
     },
     {
       "source": "src_main",
-      "target": "src_main_renderstaticpage",
+      "target": "src_main_focusrouteheading",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L151",
+      "source_location": "L103",
       "weight": 1.0
     },
     {
       "source": "src_main",
-      "target": "src_main_renderphoneremote",
+      "target": "src_main_capturefocus",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L157",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
       "source": "src_main",
-      "target": "src_main_setupvisualizer",
+      "target": "src_main_findsavedfocus",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L195",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_synccurrenthistoryentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_restorehistoryentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_rendercurrentroute",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -3440,13 +3655,68 @@
     },
     {
       "source": "src_main",
+      "target": "src_main_renderstaticpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L226",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_renderphoneremote",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_setupvisualizer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L270",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_focussnapshot",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_routehistorystate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
       "target": "src_main_registerserviceworker",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L38",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -3457,7 +3727,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L505",
+      "source_location": "L582",
       "weight": 1.0
     },
     {
@@ -3468,7 +3738,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L509",
+      "source_location": "L586",
       "weight": 1.0
     },
     {
@@ -3479,7 +3749,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L514",
+      "source_location": "L591",
       "weight": 1.0
     },
     {
@@ -3490,34 +3760,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L67",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
       "source": "src_main",
       "target": "src_main_routeto",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L78",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_focusrouteheading",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L85",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_rendercurrentroute",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3744,6 +3992,28 @@
       "confidence_score": 1.0,
       "source_file": "tsconfig.json",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config",
+      "target": "vite_config_configurepreviewserver",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config",
+      "target": "vite_config_approutes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -4063,7 +4333,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L181",
+      "source_location": "L256",
       "weight": 1.0
     },
     {
@@ -4075,7 +4345,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L183",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -4087,7 +4357,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L254",
+      "source_location": "L329",
       "weight": 1.0
     },
     {
@@ -4099,7 +4369,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L255",
+      "source_location": "L330",
       "weight": 1.0
     },
     {
@@ -4111,7 +4381,19 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L30",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_schedulehistorysync",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "src/main.ts",
+      "source_location": "L608",
       "weight": 1.0
     },
     {
@@ -4123,10 +4405,10 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L254",
+      "source_location": "L329",
       "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "16ab0a29331285a4e9435b82b40ebc23d4671ea6"
+  "built_at_commit": "0415c596e1263d9263cc58bdc29176ee6ae3867a"
 }
